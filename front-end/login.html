@@ -28,27 +28,29 @@
 
 <body>
     <div class="container ">
-        <div class="row my-2">
+        <div class="row  my-2 ">
             <div class="col-sm-5 bg-white">
                 <img src="static/logo.svg">
             </div>
-            <div class="col-sm-7 bg ">
+
+            <div class="col-sm-7 bg">
                 <!-- login -->
-                <div class="form-group">
+
+                <div class="py-5 px-5 ">
                     <span>&#128100;</span>
-                    <label class="py-2 text-light h6">Login (CPF)</label>
+                    <label class="py-3 text-light h6">Login (CPF)</label>
                     <input type="number" class="form-control" placeholder="CPF : Apenas Números" name="cpf" required
                         autofocus />
-                </div>
 
-                <div class="form-group">
                     <span>&#128273;</span>
-                    <label class="py-2 text-light h6">Senha</label>
-                    <input type="password" class="form-control" placeholder="Senha" name="senha" required />
+                    <label class="py-3 text-light h6">Senha</label>
+                    <input type="password" class="form-control " placeholder="Digite a senha" name="senha" required />
+
+                    <button type="submit" class="btn btn-success my-3">
+                        ENTRAR
+                    </button>
+
                 </div>
-                <button type="submit" class="btn btn-success my-2">
-                    ENTRAR
-                </button>
             </div>
 
             <footer class="col text-center text-light bg my-2 py-2">
