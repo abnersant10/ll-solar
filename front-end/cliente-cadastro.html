@@ -30,21 +30,36 @@
     <div class="container ">
         <!--Nav Bar -->
         <nav class="navbar row bg my-2"> <br>
-            <div class="col-lg-11 col-md-1  col-9">
+
+            <div class="col-9">
                 <p class="text-light h6 py-2">Bem vindo(a) : {{nome}}</p>
             </div>
-            <div class="col-lg-1 col-md-2 col-3 ">
+            <div class="col-3  ">
                 <a href="{% url 'logout' %}" class=" btn btn-warning  ">SAIR</a>
             </div>
 
         </nav>
 
-        <div class="row  ">
-            <div class="col-sm-5 bg-white">
-                <img src="static/logo.svg">
+        <div class="row ">
+            <div class="col-sm-3 bg-light">
+                <div class="list-group py-2">
+                    <label class="h6"> Clientes </label>
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                        Cadastrar Cliente
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Consultar Cliente</a>
+                </div>
+
+                <div class="list-group py-2">
+                    <label class="h6"> Produtos </label>
+                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+                        Cadastrar Produto
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Consultar Produtos</a>
+                </div>
             </div>
 
-            <div class="col-sm-7 bg">
+            <div class="col-sm-9 bg">
                 <!-- login -->
                 <form method="post">
                     <div class="py-5 px-5">
