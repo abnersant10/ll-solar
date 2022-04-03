@@ -42,10 +42,10 @@
             <div class="col-sm-3 bg-light">
                 <div class="list-group py-2">
                     <label class="h6"> Clientes </label>
-                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         Cadastrar
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">Consultar </a>
+                    <a href="#" class="list-group-item list-group-item-action active">Consultar </a>
                 </div>
 
                 <div class="list-group py-2">
@@ -62,63 +62,54 @@
                 <!-- login -->
                 <form method="post" class="mx-2 my-2">
                     <div class="row">
-                        <div class="col-sm-5 ">
-                            <label class="form-label text-white ">CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
+                        <div class="col-sm-6 ">
+                            <label class="form-label text-white ">Busca por Nome</label>
+                            <input type="text" name="nome_est" class="form-control" placeholder="Nome do Cliente">
                         </div>
-                        <div class="col-sm-7 ">
-                            <label class="form-label text-white ">Nome Completo</label>
-                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
+                        <div class="col-sm-6 ">
+                            <label class="form-label text-white ">Busca por CPF/CNPJ</label>
+                            <input type="text" name="nome_est" class="form-control"
+                                placeholder="CPF ou CNPJ (Apenas Números)">
                         </div>
-                        <!--Contato e Endereço -->
-                        <div class=" col-5 col-sm-5 py-2">
-                            <label class="form-label text-white ">Telefone/WhatsApp</label>
-                            <input type="text" class="form-control" placeholder="84 9 9999 9999">
-                        </div>
-                        <div class=" col-7 col-sm-7 py-2">
-                            <label class="form-label text-white ">E-mail</label>
-                            <input type="text" class="form-control" placeholder="email@email.com">
-                        </div>
-                        <div class="col-sm-5">
-                            <label class="form-label text-white ">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Logradouro">
-                        </div>
-                        <div class="col-3 col-sm-2">
-                            <label class="form-label text-white ">Número</label>
-                            <input type="text" class="form-control" placeholder="Nº">
-                        </div>
-                        <div class="col-9 col-sm-5">
-                            <label class="form-label text-white ">Bairro</label>
-                            <input type="text" class="form-control" placeholder="Ex: Lagoa Nova">
-                        </div>
-                        <div class="col-8 col-sm-5 py-2">
-                            <label class="form-label text-white ">Cidade</label>
-                            <input type="text" class="form-control" placeholder="Ex: Natal">
-                        </div>
-                        <div class="col-4 col-sm-2 py-2">
-                            <label class="form-label text-white ">Estado</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>RN</option>
-                                <option value="PB">PB</option>
-                                <option value="CE">CE</option>
-                                <option value="PE">PE</option>
-                            </select>
-                        </div>
-
-
-
-
                     </div>
-                    <div class="col py-2">
-                        <label class="form-label text-white ">Complemento</label>
-                        <textarea class="form-control" placeholder="Informações complementares" rows="2"></textarea>
-                    </div>
+
                     <button type="submit" class="my-4 btn btn-success ">
-                        CADASTRAR
+                        Buscar
                     </button>
                 </form>
 
+                <table class="table table-bordered  table-hover ">
+                    <thead class="table-light">
+                        <tr>
+                            <td class="table-secondary"><b>Nome</b></td>
+                            <td class="table-secondary"><b>CPF</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table-light"><b>Abner de Santana Silva</b></td>
+                            <td class="table-light"><b>11437764452</b></td>
+                        </tr>
+                        <tr>
+                            <td class="table-light"><b>Leandro Silveira Martins</b></td>
+                            <td class="table-light"><b>85968532150</b></td>
+                        </tr>
+                        <tr>
+                            <td class="table-light"><b>Clovis Barros Neto</b></td>
+                            <td class="table-light"><b>03255966852</b></td>
+                        </tr>
 
+                        <tr>
+                            <td class="table-light"><b>Carlos Chagas Souza</b></td>
+                            <td class="table-light"><b>25636514596</b></td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-light"><b>Aristides Pacheco Gomes</b></td>
+                            <td class="table-light"><b>95864813711</b></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <footer class="col text-center text-light bg my-2 py-2">
