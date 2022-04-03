@@ -60,18 +60,55 @@
 
             <div class="col-sm-9 bg">
                 <!-- login -->
+                <form method="post" class="mx-2 my-2">
+                    <div class="row">
+                        <div class="col-5">
+                            <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
+                        </div>
+                        <div class="col-7">
+                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
+                        </div>
+                        <!--Contato e Endereço -->
+                        <div class="col-5 py-2">
+                            <input type="text" class="form-control" placeholder="Telefone/WhatsApp">
+                        </div>
+                        <div class="col-7 py-2">
+                            <input type="text" class="form-control" placeholder="email@email.com">
+                        </div>
+                        <div class="col-5">
+                            <input type="text" class="form-control" placeholder="Endereço">
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" placeholder="Nº">
+                        </div>
+                        <div class="col-5">
+                            <input type="text" class="form-control" placeholder="Bairro">
+                        </div>
+                        <div class="col-5 py-2">
+                            <input type="text" class="form-control" placeholder="Cidade">
+                        </div>
+                        <div class="col-2 py-2">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>RN</option>
+                                <option value="PB">PB</option>
+                                <option value="CE">CE</option>
+                                <option value="PE">PE</option>
+                            </select>
+                        </div>
 
-                <form class="row py-4 px-4" method="post">
-                    <div class="col-4">
-                        <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
+
+
+
                     </div>
-                    <div class="col-8">
-                        <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
+                    <div class="col py-2">
+
+                        <textarea class="form-control" placeholder="Complemento" rows="2"></textarea>
                     </div>
+                    <button type="submit" class="my-4 btn btn-success ">
+                        CADASTRAR
+                    </button>
                 </form>
-                <button type="submit" class="btn btn-success my-4 mx-4">
-                    CADASTRAR
-                </button>
+
 
             </div>
 
