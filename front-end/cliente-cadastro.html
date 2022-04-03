@@ -16,8 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         body {
-            background-color: #75A8f7;
-
+            background-color: lightblue;
         }
 
         .bg {
@@ -30,11 +29,10 @@
     <div class="container ">
         <!--Nav Bar -->
         <nav class="navbar row bg my-2"> <br>
-
-            <div class="col-9">
-                <p class="text-light h6 py-2">Bem vindo(a) : {{nome}}</p>
+            <div class="col-9 col-md-10 col-lg-11">
+                <p class="text-light h6 py-1">Bem vindo(a) : {{nome}}</p>
             </div>
-            <div class="col-3  ">
+            <div class="col-3  col-md-2 col-lg-1">
                 <a href="{% url 'logout' %}" class=" btn btn-warning  ">SAIR</a>
             </div>
 
@@ -45,9 +43,9 @@
                 <div class="list-group py-2">
                     <label class="h6"> Clientes </label>
                     <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        Cadastrar
+                        Cadastrar Cliente
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">Consultar</a>
+                    <a href="#" class="list-group-item list-group-item-action">Consultar Cliente</a>
                 </div>
 
                 <div class="list-group py-2">
