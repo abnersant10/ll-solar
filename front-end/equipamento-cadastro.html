@@ -42,67 +42,55 @@
             <div class="col-sm-3 bg-light">
                 <div class="list-group py-2">
                     <label class="h6"> Clientes </label>
-                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                         Cadastrar
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">Consultar </a>
                 </div>
 
                 <div class="list-group py-2">
-                    <label class="h6"> Produtos </label>
+                    <label class="h6"> Equipamento </label>
                     <a href="#" class="list-group-item list-group-item-action " >
                         Cadastrar
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">Consultar </a>
+                    <a href="#" class="list-group-item list-group-item-action" >Consultar </a>
                 </div>
                 <label class="h6"> Orçamento </label>
             </div>
 
             <div class="col-sm-9 bg">
-                <!-- login -->
+                <!-- nome do produto -->
                 <form method="post" class="mx-2 my-2">
                     <div class="row">
-                        <div class="col-5">
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
-                        </div>
-                        <div class="col-7">
-                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
-                        </div>
-                        <!--Contato e Endereço -->
-                        <div class="col-5 py-2">
-                            <input type="text" class="form-control" placeholder="Telefone/WhatsApp">
-                        </div>
-                        <div class="col-7 py-2">
-                            <input type="text" class="form-control" placeholder="email@email.com">
-                        </div>
-                        <div class="col-5">
-                            <input type="text" class="form-control" placeholder="Endereço">
-                        </div>
                         <div class="col-2">
-                            <input type="text" class="form-control" placeholder="Nº">
+                            <input type="text" class="form-control" placeholder="Código">
                         </div>
-                        <div class="col-5">
-                            <input type="text" class="form-control" placeholder="Bairro">
+                        <div class="col-10">
+                            <input type="text" class="form-control" placeholder="Descrição">
                         </div>
-                        <div class="col-5 py-2">
-                            <input type="text" class="form-control" placeholder="Cidade">
+                        <!--informações do produto -->
+                        <div class="col-3 py-2">
+                            <input type="text" class="form-control" placeholder="Fabricante">
                         </div>
-                        <div class="col-2 py-2">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>RN</option>
-                                <option value="PB">PB</option>
-                                <option value="CE">CE</option>
-                                <option value="PE">PE</option>
+                        <div class="col-3 py-2">
+                            <input type="text" class="form-control" placeholder="modelo">
+                        </div>
+                        <div class="col-3 py-2">
+                            <input type="text" class="form-control" placeholder="potência">
+                        </div>
+                        <div class="col-3 py-2">
+                            <select class="form-select" aria-placeholder="Tipo de telhado">
+                                <option selected>Tipo de telhado</option>
+                                <option value="01">Fibrocimento</option>
+                                <option value="02">Chapa Metalica</option>
+                                <option value="03">Solo</option>
+                                <option value="04">Laje</option>
                             </select>
-                        </div>
+                        </div> 
 
 
 
 
-                    </div>
-                    <div class="col py-2">
-
-                        <textarea class="form-control" placeholder="Complemento" rows="2"></textarea>
                     </div>
                     <button type="submit" class="my-4 btn btn-success ">
                         CADASTRAR
