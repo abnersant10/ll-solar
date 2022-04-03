@@ -55,36 +55,33 @@
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">Consultar </a>
                 </div>
+                <label class="h6"> Orçamento </label>
             </div>
 
             <div class="col-sm-9 bg">
                 <!-- login -->
-                <form method="post">
-                    <div class="py-5 px-5">
-                        <span>&#128100;</span>
-                        <label class="py-3 text-light h6">Login (CPF)</label>
-                        <input type="number" class="form-control" placeholder="CPF : Apenas Números" name="cpf" required
-                            autofocus />
 
-                        <span>&#128273;</span>
-                        <label class="py-3 text-light h6">Senha</label>
-                        <input type="password" class="form-control " placeholder="Digite a senha" name="senha"
-                            required />
-
-                        <button type="submit" class="btn btn-success my-3">
-                            ENTRAR
-                        </button>
+                <form class="row py-4 px-4" method="post">
+                    <div class="col-4">
+                        <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
+                    </div>
                 </form>
+                <button type="submit" class="btn btn-success my-4 mx-4">
+                    CADASTRAR
+                </button>
+
             </div>
+
+            <footer class="col text-center text-light bg my-2 py-2">
+                <br>
+                <h6> LL Solar - Todos os Direitos Reservados - 2022 </h6>
+                <br>
+            </footer>
+
         </div>
-
-        <footer class="col text-center text-light bg my-2 py-2">
-            <br>
-            <h6> LL Solar - Todos os Direitos Reservados - 2022 </h6>
-            <br>
-        </footer>
-
-    </div>
 
 
     </div>
