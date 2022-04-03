@@ -42,43 +42,42 @@
             <div class="col-sm-3 bg-light">
                 <div class="list-group py-2">
                     <label class="h6"> Clientes </label>
-                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         Cadastrar
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">Consultar </a>
                 </div>
 
                 <div class="list-group py-2">
-                    <label class="h6"> Equipamento </label>
-                    <a href="#" class="list-group-item list-group-item-action active" >
+                    <label class="h6"> Equipamentos </label>
+                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         Cadastrar
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action" >Consultar </a>
+                    <a href="#" class="list-group-item list-group-item-action active">Consultar </a>
                 </div>
                 <label class="h6"> Orçamento </label>
             </div>
 
             <div class="col-sm-9 bg">
-                <!-- nome do produto -->
+                <!-- login -->
                 <form method="post" class="mx-2 my-2">
                     <div class="row">
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" placeholder="Código">
+                        <div class="col-md-2 ">
+                            <label class="form-label text-white ">Cógido</label>
+                            <input type="text" name="nome_est" class="form-control" placeholder="Código">
                         </div>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="Descrição">
+                        <div class="col-md-4 ">
+                            <label class="form-label text-white ">Descrição</label>
+                            <input type="text" name="nome_est" class="form-control"
+                                placeholder="Descrição">
                         </div>
-                        <!--informações do produto -->
-                        <div class="col-md-3 py-2">
-                            <input type="text" class="form-control" placeholder="Fabricante">
+                        <div class="col-md-3 ">
+                            <label class="form-label text-white ">Fabricante</label>
+                            <input type="text" name="nome_est" class="form-control"
+                                placeholder="Fabricante">
                         </div>
-                        <div class="col-md-3 py-2">
-                            <input type="text" class="form-control" placeholder="modelo">
-                        </div>
-                        <div class="col-md-3 py-2">
-                            <input type="text" class="form-control" placeholder="potência">
-                        </div>
-                        <div class="col-md-3 py-2">
+                        <div class="col-md-3">
+                            <label class="form-label text-white ">Tipo de telhado</label>
                             <select class="form-select" aria-placeholder="Tipo de telhado">
                                 <option selected>Tipo de telhado</option>
                                 <option value="01">Fibrocimento</option>
@@ -86,18 +85,46 @@
                                 <option value="03">Solo</option>
                                 <option value="04">Laje</option>
                             </select>
-                        </div> 
-
-
-
-
+                        
                     </div>
+
                     <button type="submit" class="my-4 btn btn-success ">
-                        CADASTRAR
+                        Buscar
                     </button>
                 </form>
 
+                <table class="table table-bordered  table-hover ">
+                    <thead class="table-light">
+                        <tr>
+                            <td class="table-secondary"><b>Nome</b></td>
+                            <td class="table-secondary"><b>CPF</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table-light"><b>Abner de Santana Silva</b></td>
+                            <td class="table-light"><b>11437764452</b></td>
+                        </tr>
+                        <tr>
+                            <td class="table-light"><b>Leandro Silveira Martins</b></td>
+                            <td class="table-light"><b>85968532150</b></td>
+                        </tr>
+                        <tr>
+                            <td class="table-light"><b>Clovis Barros Neto</b></td>
+                            <td class="table-light"><b>03255966852</b></td>
+                        </tr>
 
+                        <tr>
+                            <td class="table-light"><b>Carlos Chagas Souza</b></td>
+                            <td class="table-light"><b>25636514596</b></td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-light"><b>Aristides Pacheco Gomes</b></td>
+                            <td class="table-light"><b>95864813711</b></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <footer class="col text-center text-light bg my-2 py-2">
