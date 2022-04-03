@@ -26,8 +26,8 @@
 </head>
 
 <body>
-    <div class="container ">
         <!--Nav Bar -->
+        
         <nav class="navbar row bg my-2"> <br>
             <div class="col-9 col-md-10 col-lg-11">
                 <p class="text-light h6 py-1">Bem vindo(a) : {{nome}}</p>
@@ -38,8 +38,10 @@
 
         </nav>
 
-        <div class="row ">
-            <div class="col-sm-3 bg-light">
+
+        <div class="row">
+        <nav class="col-sm-2">
+            <div class="">
                 <div class="list-group py-2">
                     <label class="h6"> Clientes </label>
                     <a href="#" class="list-group-item list-group-item-action" aria-current="true">
@@ -57,44 +59,41 @@
                 </div>
                 <label class="h6"> Orçamento </label>
             </div>
-
-            <div class="col-sm-9 bg">
-                <!-- nome do produto -->
-                <form method="post" class="mx-2 my-2">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" placeholder="Código">
-                        </div>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="Descrição">
-                        </div>
-                        <!--informações do produto -->
-                        <div class="col-md-3 py-2">
-                            <input type="text" class="form-control" placeholder="Fabricante">
-                        </div>
-                        <div class="col-md-3 py-2">
-                            <input type="text" class="form-control" placeholder="modelo">
-                        </div>
-                        <div class="col-md-3 py-2">
-                            <input type="text" class="form-control" placeholder="potência">
-                        </div>
-                        <div class="col-md-3 py-2">
-                            <select class="form-select" aria-placeholder="Tipo de telhado">
-                                <option selected>Tipo de telhado</option>
-                                <option value="01">Fibrocimento</option>
-                                <option value="02">Chapa Metalica</option>
-                                <option value="03">Solo</option>
-                                <option value="04">Laje</option>
-                            </select>
-                        </div> 
-
-
-
-
+        </nav>
+        <div class="col-lg-9 bg">
+            <!-- nome do produto -->
+            <form method="post" class="mx-2 my-2">
+                <div class="row">
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" placeholder="Código">
                     </div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" placeholder="Descrição">
+                    </div>
+                    <!--informações do produto -->
+                    <div class="col-md-3 py-2">
+                        <input type="text" class="form-control" placeholder="Fabricante">
+                    </div>
+                    <div class="col-md-3 py-2">
+                        <input type="text" class="form-control" placeholder="modelo">
+                    </div>
+                    <div class="col-md-3 py-2">
+                        <input type="text" class="form-control" placeholder="potência">
+                    </div>
+                    <div class="col-md-3 py-2">
+                        <select class="form-select" aria-placeholder="Tipo de estrutura">
+                            <option selected>Tipo de estrutura</option>
+                            <option value="01">Fibrocimento</option>
+                            <option value="02">Chapa Metalica</option>
+                            <option value="03">Solo</option>
+                            <option value="04">Laje</option>
+                        </select>
+                    </div>
+                                        </div>
                     <button type="submit" class="my-4 btn btn-success ">
                         CADASTRAR
                     </button>
+    </div>
                 </form>
 
 
