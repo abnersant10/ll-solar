@@ -26,8 +26,8 @@
 </head>
 
 <body>
+    <div class="container ">
         <!--Nav Bar -->
-        
         <nav class="navbar row bg my-2"> <br>
             <div class="col-9 col-md-10 col-lg-11">
                 <p class="text-light h6 py-1">Bem vindo(a) : {{nome}}</p>
@@ -38,62 +38,69 @@
 
         </nav>
 
-
-        <div class="row">
-        <nav class="col-sm-2">
-            <div class="">
+        <div class="row ">
+            <div class="col-sm-3 bg-light">
                 <div class="list-group py-2">
                     <label class="h6"> Clientes </label>
-                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
                         Cadastrar
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">Consultar </a>
                 </div>
 
                 <div class="list-group py-2">
-                    <label class="h6"> Equipamento </label>
-                    <a href="#" class="list-group-item list-group-item-action active" >
-                        Cadastrar
+                    <label class="h6"> Equipamentos </label>
+                    <a href="#" class="list-group-item list-group-item-action active " aria-current="true">
+                        Cadastrar/Consultar
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action" >Consultar </a>
                 </div>
+                <br>
                 <label class="h6"> Orçamento </label>
+                <br><br>
+                <label class="h6"> Relatórios </label>
+                <br><br>
             </div>
-        </nav>
-        <div class="col-lg-9 bg">
-            <!-- nome do produto -->
-            <form method="post" class="mx-2 my-2">
-                <div class="row">
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" placeholder="Código">
+
+            <div class="col-sm-9 bg">
+                <!-- login -->
+                <form method="post" class="mx-2 my-2">
+                    <div class="row">
+                        <div class="col col-sm-3">
+                            <label class="form-label text-white ">Tipo do equipamento</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Módulo</option>
+                                <option value="">Inversor</option>
+                                <option value="">String Box</option>
+                                <option value="">Estrutura</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-9 ">
+                            <label class="form-label text-white ">Descrição</label>
+                            <input type="text" class="form-control" placeholder="Ex: MÓDULO FOTOVOLTAICO ">
+                        </div>
+                        <div class="col-sm-3 py-2 ">
+                            <label class="form-label text-white ">Fabricante</label>
+                            <input type="text" class="form-control" placeholder="Ex: SUNGROW  ">
+                        </div>
+                        <div class="col-sm-3 py-2 ">
+                            <label class="form-label text-white ">Modelo</label>
+                            <input type="text" class="form-control" placeholder="Ex: BYD P6K  ">
+                        </div>
+                        <div class="col-sm-3 py-2 ">
+                            <label class="form-label text-white ">Potência em Watt</label>
+                            <input type="text" class="form-control" placeholder="Apenas números  ">
+                        </div>
+
+
                     </div>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" placeholder="Descrição">
+                    <div class="col py-2">
+                        <label class="form-label text-white ">Complemento</label>
+                        <textarea class="form-control" placeholder="Informações complementares" rows="2"></textarea>
                     </div>
-                    <!--informações do produto -->
-                    <div class="col-md-3 py-2">
-                        <input type="text" class="form-control" placeholder="Fabricante">
-                    </div>
-                    <div class="col-md-3 py-2">
-                        <input type="text" class="form-control" placeholder="modelo">
-                    </div>
-                    <div class="col-md-3 py-2">
-                        <input type="text" class="form-control" placeholder="potência">
-                    </div>
-                    <div class="col-md-3 py-2">
-                        <select class="form-select" aria-placeholder="Tipo de estrutura">
-                            <option selected>Tipo de estrutura</option>
-                            <option value="01">Fibrocimento</option>
-                            <option value="02">Chapa Metalica</option>
-                            <option value="03">Solo</option>
-                            <option value="04">Laje</option>
-                        </select>
-                    </div>
-                                        </div>
                     <button type="submit" class="my-4 btn btn-success ">
-                        CADASTRAR
+                        Cadastrar
                     </button>
-    </div>
                 </form>
 
 
