@@ -25,7 +25,24 @@
         .bg {
             background-color: #14275a;
         }
+        .dropdown:hover .dropdown-menu{
+            display: block;
+        }
+        .dropdown-menu{
+            margin-top: 0;
+        }
     </style>
+
+    <script>
+        $(document).ready(function(){
+            $(".dropdown").hover(function(){
+                var dropdownMenu = $(this).children(".dropdown-menu");
+                if(dropdownMenu.is(":visible")){
+                    dropdownMenu.parent().toggleClass("open");
+                }
+            });
+        });     
+        </script>
 </head>
 
 <body>
@@ -58,6 +75,35 @@
                           </li>
                         </ul>
                       </li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Equipamentos</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
+                          </li>
+                        </ul>
+                      </li>
+
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Orçamento</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatórios</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
+                          </li>
+                        </ul>
+                      </li>
+
                 </ul>
                 
               </div>
