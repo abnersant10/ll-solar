@@ -13,7 +13,7 @@ def home(request):
         user = authenticate(request, username=cpf, password=senha)
         if user is not None:
             login(request, user)
-            return redirect('clientes_cadastro')
+            return redirect('clientes-cadastro')
         else:
             messages.error(request, 'CPF ou Senha Incorreta!')
     return render(request, "home.html")
@@ -26,11 +26,19 @@ def logout_view(request):
 
 def clientes_cadastro(request):
     if request.user.is_authenticated == True:
-        return render(request, "clientes_cadastro.html")
+        nome = request.user.first_name
+        sobre_nome = request.user.last_name
+        print(nome)
+        context = {
+            'nome': nome,
+            'sobre_nome': sobre_nome
+        }
+        return render(request, "clientes-cadastro.html", context)
 
 
 def clientes_consulta(request):
-    pass
+    if request.user.is_authenticated == True:
+        return render(request, "clientes-consulta.html")
 
 
 def equipamentos_cadastro(request):

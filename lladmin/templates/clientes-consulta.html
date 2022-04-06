@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LL - Solar</title>
+    <title>Consultar Clientes</title>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -54,7 +54,7 @@
         <!--Nav Bar -->
         <nav class="navbar row bg my-2"> <br>
             <div class="col-9 col-md-10 col-lg-11">
-                <a class="navbar-brand h4 text-light" href="#">Bem vindo {{nome}}</a>
+                <a class="navbar-brand h4 text-light" href="#">Bem-vindo(a): {{nome}} {{sobre_nome}}</a>
             </div>
             <div class="col-3  col-md-2 col-lg-1 ">
                 <a href="{% url 'logout' %}" class=" btn btn-warning  text-secondary">SAIR</a>
@@ -74,7 +74,7 @@
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle text-light  " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clientes</a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
+                          <li><a class="dropdown-item" href="{% url 'clientes-cadastro' %}">Cadastrar</a></li>
                           <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
                           </li>
                         </ul>
@@ -88,7 +88,9 @@
                         <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Orçamento</a>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#scrollspyHeading3">Novo</a></li>
-                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Em Análise</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Aprovados</a></li>
+                          </li>
                           </li>
                         </ul>
                       </li>
@@ -115,63 +117,98 @@
                 <!-- login -->
                 <form method="post" class="mx-2 my-2">
                     <div class="row">
-                        <p class="text-warning h6 ">  Cadastrar Cliente </p>
+                        <p class="text-warning h6 ">  Consultar Clientes </p>
                         <hr class="col-11">
                     </div>
-                    
-                    
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-11 col-sm-5 ">
-                            <label class="form-label text-white ">CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
+                            <label class="form-label text-white ">Busca por Nome</label>
+                            <input type="text" name="nome_est" class="form-control" placeholder="Nome do Cliente">
                         </div>
-                        <div class=" col-11 col-sm-6 ">
-                            <label class="form-label text-white ">Nome Completo</label>
-                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
-                        </div>
-                        <!--Contato e Endereço -->
-                        <div class=" col-5 col-sm-5 py-2">
-                            <label class="form-label text-white ">Telefone/WhatsApp</label>
-                            <input type="text" class="form-control" placeholder="84 9 9999 9999">
-                        </div>
-                        <div class=" col-6 col-sm-6 py-2">
-                            <label class="form-label text-white ">E-mail</label>
-                            <input type="text" class="form-control" placeholder="email@email.com">
-                        </div>
-                        <div class="col-11 col-sm-5">
-                            <label class="form-label text-white ">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Logradouro">
-                        </div>
-                        <div class="col-3 col-sm-2">
-                            <label class="form-label text-white ">Número</label>
-                            <input type="text" class="form-control" placeholder="Nº">
-                        </div>
-                        <div class="col-8 col-sm-4">
-                            <label class="form-label text-white ">Bairro</label>
-                            <input type="text" class="form-control" placeholder="Ex: Lagoa Nova">
-                        </div>
-                        <div class="col-7 col-sm-5 py-2">
-                            <label class="form-label text-white ">Cidade</label>
-                            <input type="text" class="form-control" placeholder="Ex: Natal">
-                        </div>
-                        <div class="col-4 col-sm-2 py-2">
-                            <label class="form-label text-white ">Estado</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>RN</option>
-                                <option value="PB">PB</option>
-                                <option value="CE">CE</option>
-                                <option value="PE">PE</option>
-                            </select>
-                        </div>
+                        
                     </div>
-                    <div class="col-11 py-2">
-                        <label class="form-label text-white ">Complemento</label>
-                        <textarea class="form-control" placeholder="Informações complementares" rows="2"></textarea>
-                    </div>
+
                     <button type="submit" class="my-4 btn btn-success ">
-                        Cadastrar
+                        Buscar
                     </button>
                 </form>
+
+
+            
+                <div class="row">
+                    <p class="text-warning h6 ">  Clientes Cadastrados </p><hr>
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <p class="h6 text-white"> Total de Pessoas : 431 </p>
+                        <table class="table table-bordered  table-hover ">
+                            <thead class="table-light">
+                                <tr>
+                                    <td class="table-secondary"><b>Nome</b></td>
+                                    <td class="table-secondary"><b>WhatsApp</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="table-light"><b>Abner de Santana Silva</b></td>
+                                    <td class="table-light"><b>911172755</b></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-light"><b>Leandro Silveira Martins</b></td>
+                                    <td class="table-light"><b>95684255</b></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-light"><b>Clovis Barros Neto</b></td>
+                                    <td class="table-light"><b>911172755</b></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-light"><b>Carlos Chagas Souza</b></td>
+                                    <td class="table-light"><b>986559745</b></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-light"><b>Aristides Pacheco Gomes</b></td>
+                                    <td class="table-light"><b>915568779</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col col-md-12 col-lg-6">
+                        <p class="h6 text-white"> Total de empresas : 121 </p>
+                        <table class="table table-bordered  table-hover ">
+                            <thead class="table-light">
+                                <tr>
+                                    <td class="table-secondary"><b>Nome Fantasia</b></td>
+                                    <td class="table-secondary"><b>WhatsApp</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="table-light"><b>Nordestão LTDA</b></td>
+                                    <td class="table-light"><b>91375080</b></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-light"><b>Favorito Supermercado</b></td>
+                                    <td class="table-light"><b>965846231</b></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-light"><b>Natal Shopping</b></td>
+                                    <td class="table-light"><b>99685412</b></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-light"><b>PotiMidia</b></td>
+                                    <td class="table-light"><b>99685963</b></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-light"><b>TV Cabugi</b></td>
+                                    <td class="table-light"><b>99685420</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
 
             </div>

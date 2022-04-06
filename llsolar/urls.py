@@ -22,7 +22,7 @@ urlpatterns = [
     path('', home, name='home'),
     # aqui seria a página inicial
     path('/clientes/cadastro', clientes_cadastro, name='clientes-cadastro'),
-    path('clientes/consulta', clientes_consulta, name='clientes-consulta'),
+    path('/clientes/consulta', clientes_consulta, name='clientes-consulta'),
     path('equipamentos/cadastro', equipamentos_cadastro,
          name='equipamentos_cadastro'),
     path('logout', logout_view, name="logout"),
