@@ -1,4 +1,5 @@
 from urllib import request
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import *
@@ -33,6 +34,8 @@ def clientes_cadastro(request):
             'sobre_nome': sobre_nome
         }
         return render(request, "clientes-cadastro.html", context)
+    else:
+        return redirect('home')
 
 
 def clientes_consulta(request):
@@ -44,6 +47,8 @@ def clientes_consulta(request):
             'sobre_nome': sobre_nome
         }
         return render(request, "clientes-consulta.html", context)
+    else:
+        return redirect('home')
 
 
 def equipamentos_cadastro(request):
