@@ -21,8 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     # aqui seria a página inicial
-    path('/clientes/cadastro', clientes_cadastro, name='clientes_cadastro'),
-    path('clientes/consulta', clientes_consulta, name='clientes_consulta'),
+    path('/clientes/cadastro', clientes_cadastro, name='clientes-cadastro'),
+    path('clientes/consulta', clientes_consulta, name='clientes-consulta'),
     path('equipamentos/cadastro', equipamentos_cadastro,
          name='equipamentos_cadastro'),
     path('logout', logout_view, name="logout"),
