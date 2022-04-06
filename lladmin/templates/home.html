@@ -18,19 +18,23 @@
         .bg {
             background-color : #14275a;
         }
+        body {
+            background-color: 	lightblue;
+        }
       </style>
 </head>
 
 <body>
-    <div class="container  ">
-        <div class="row">
-            <div class="col-sm-5">
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-sm-5 bg-light">
                 <img src="static/img/logo.svg" class="logo">
             </div>
 
             <div class="col-sm-7 bg">
                 <!-- login -->
                 <form method="post">
+                    {% csrf_token %}
                     <div class="py-5 px-5">
                         <span>&#128100;</span>
                         <label class="py-3 text-light h6">Login (CPF)</label>
