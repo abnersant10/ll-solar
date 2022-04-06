@@ -52,4 +52,13 @@ def clientes_consulta(request):
 
 
 def equipamentos_cadastro(request):
-    pass
+    if request.user.is_authenticated == True:
+        nome = request.user.first_name
+        sobre_nome = request.user.last_name
+        context = {
+            'nome': nome,
+            'sobre_nome': sobre_nome
+        }
+        return render(request, "equipamentos.html", context)
+    else:
+        return redirect('home')
