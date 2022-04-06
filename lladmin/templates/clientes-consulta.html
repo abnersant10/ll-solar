@@ -116,10 +116,12 @@
             <div class="row bg">
                 <!-- login -->
                 <form method="post" class="mx-2 my-2">
+                    {% csrf_token %}
                     <div class="row">
                         <p class="text-warning h6 ">  Consultar Clientes </p>
-                        <hr class="col-11">
+                        
                     </div>
+                    
                     <div class="row ">
                         <div class="col-11 col-sm-5 ">
                             <label class="form-label text-white ">Busca por Nome</label>
@@ -136,7 +138,8 @@
 
             
                 <div class="row">
-                    <p class="text-warning h6 ">  Clientes Cadastrados </p><hr>
+                   
+                    <p class="text-warning h6 ">  Clientes Cadastrados </p> <hr>
                     <div class="col-12 col-md-12 col-lg-6">
                         <p class="h6 text-white"> Total de Pessoas : 431 </p>
                         <table class="table table-bordered  table-hover ">
@@ -149,7 +152,8 @@
                             <tbody>
                                 <tr>
                                     <td class="table-light"><b>Abner de Santana Silva</b></td>
-                                    <td class="table-light"><b>911172755</b></td>
+                                    <td class="table-light"><a href="https://api.WhatsApp.com/send?phone=991375070" target="_blank"> 991375070 </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="table-light"><b>Leandro Silveira Martins</b></td>

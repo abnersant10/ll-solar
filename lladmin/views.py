@@ -28,7 +28,6 @@ def clientes_cadastro(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
-        print(nome)
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome
@@ -38,7 +37,13 @@ def clientes_cadastro(request):
 
 def clientes_consulta(request):
     if request.user.is_authenticated == True:
-        return render(request, "clientes-consulta.html")
+        nome = request.user.first_name
+        sobre_nome = request.user.last_name
+        context = {
+            'nome': nome,
+            'sobre_nome': sobre_nome
+        }
+        return render(request, "clientes-consulta.html", context)
 
 
 def equipamentos_cadastro(request):
