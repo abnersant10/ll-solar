@@ -19,11 +19,11 @@
 
     <style>
         body {
-            background-color: lightblue;
+            
         }
 
         .bg {
-            background-color: #14275a;
+            background-color: #496499;
         }
         .dropdown:hover .dropdown-menu{
             display: block;
@@ -31,6 +31,8 @@
         .dropdown-menu{
             margin-top: 0;
         }
+
+      
     </style>
 
     <script>
@@ -50,16 +52,16 @@
         <!--Nav Bar -->
         <nav class="navbar row bg my-2"> <br>
             <div class="col-9 col-md-10 col-lg-11">
-                <p class="text-light h6 py-1">Bem vindo(a) : {{nome}}</p>
+                <a class="navbar-brand h4 text-light" href="#">Bem vindo {{nome}}</a>
             </div>
-            <div class="col-3  col-md-2 col-lg-1">
-                <a href="{% url 'logout' %}" class=" btn btn-warning  ">SAIR</a>
+            <div class="col-3  col-md-2 col-lg-1 ">
+                <a href="{% url 'logout' %}" class=" btn btn-warning  text-secondary">SAIR</a>
             </div>
         </nav>
 
-        <div class="row my-2">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">Menu</a>
+        <div class="row my-2 bg-secondary">
+        <nav class="navbar navbar-expand-lg navbar-light menu-nav">
+              <a class="navbar-brand text-light" href="#">Menu</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -67,82 +69,51 @@
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                   
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clientes</a>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clientes</a>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li class="nav-item ">
+                        <a class="nav-link text-light" href="#">Equipamentos</a>
+                      </li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Orçamento</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#scrollspyHeading3">Novo</a></li>
                           <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
                           </li>
                         </ul>
                       </li>
 
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Equipamentos</a>
+                        <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatórios</a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
-                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading3">Simples</a></li>
+                          <li><a class="dropdown-item" href="#scrollspyHeading4">Completo</a></li>
                           </li>
                         </ul>
                       </li>
-
-
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Orçamento</a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
-                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
-                          </li>
-                        </ul>
-                      </li>
-
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatórios</a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#scrollspyHeading3">Cadastrar</a></li>
-                          <li><a class="dropdown-item" href="#scrollspyHeading4">Consultar</a></li>
-                          </li>
-                        </ul>
-                      </li>
-
                 </ul>
-                
               </div>
           </nav>
         </div>
 
-        <div class="row ">
-            <div class="col-sm-3 bg-light">
-                <div class="list-group py-2">
-                    <label class="h6"> Clientes </label>
-                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        Cadastrar
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">Consultar </a>
-                </div>
-
-                <div class="list-group py-2">
-                    <label class="h6"> Equipamentos </label>
-                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-                        Cadastrar
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">Consultar </a>
-                </div>
-                br><br>
-                <label class="h6"> Orçamento </label>
-                <br><br>
-                <label class="h6"> Relatórios </label>
-                <br><br>
-            </div>
-
-            <div class="col-sm-9 bg">
+        
+            <div class="row bg">
                 <!-- login -->
                 <form method="post" class="mx-2 my-2">
                     <div class="row">
-                        <div class="col-sm-5 ">
+                        <div class="col-11 col-sm-5 ">
                             <label class="form-label text-white ">CPF ou CNPJ</label>
                             <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)">
                         </div>
-                        <div class="col-sm-7 ">
+                        <div class=" col-11 col-sm-6 ">
                             <label class="form-label text-white ">Nome Completo</label>
                             <input type="text" class="form-control" placeholder="Nome / Nome Fantasia">
                         </div>
@@ -151,11 +122,11 @@
                             <label class="form-label text-white ">Telefone/WhatsApp</label>
                             <input type="text" class="form-control" placeholder="84 9 9999 9999">
                         </div>
-                        <div class=" col-7 col-sm-7 py-2">
+                        <div class=" col-6 col-sm-6 py-2">
                             <label class="form-label text-white ">E-mail</label>
                             <input type="text" class="form-control" placeholder="email@email.com">
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-11 col-sm-5">
                             <label class="form-label text-white ">Endereço</label>
                             <input type="text" class="form-control" placeholder="Logradouro">
                         </div>
@@ -163,11 +134,11 @@
                             <label class="form-label text-white ">Número</label>
                             <input type="text" class="form-control" placeholder="Nº">
                         </div>
-                        <div class="col-9 col-sm-5">
+                        <div class="col-8 col-sm-4">
                             <label class="form-label text-white ">Bairro</label>
                             <input type="text" class="form-control" placeholder="Ex: Lagoa Nova">
                         </div>
-                        <div class="col-8 col-sm-5 py-2">
+                        <div class="col-7 col-sm-5 py-2">
                             <label class="form-label text-white ">Cidade</label>
                             <input type="text" class="form-control" placeholder="Ex: Natal">
                         </div>
@@ -180,12 +151,8 @@
                                 <option value="PE">PE</option>
                             </select>
                         </div>
-
-
-
-
                     </div>
-                    <div class="col py-2">
+                    <div class="col-11 py-2">
                         <label class="form-label text-white ">Complemento</label>
                         <textarea class="form-control" placeholder="Informações complementares" rows="2"></textarea>
                     </div>
@@ -197,14 +164,13 @@
 
             </div>
 
-            <footer class="col text-center text-light bg my-2 py-2">
+            <footer class="row text-center text-light bg my-2 py-2">
                 <br>
                 <h6> LL Solar - Todos os Direitos Reservados - 2022 </h6>
                 <br>
             </footer>
 
         </div>
-
 
     </div>
 
