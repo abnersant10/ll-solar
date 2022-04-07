@@ -143,7 +143,7 @@
                     <p class="text-warning h6 py-2 ">  Clientes Cadastrados </p>
                     <hr class="text-light">
                     <div class="col-12 col-md-11 col-lg-6">
-                        <p class="h6 text-white"> Total de Pessoas : 431 </p>
+                        <p class="h6 text-white"> Total de Pessoas : {{tot_cpfs}} </p>
                         <table class="table table-bordered  table-hover ">
                             <thead class="table-light">
                                 <tr>
@@ -152,35 +152,19 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for nome , zap  in pessoas.items %}
                                 <tr>
-                                    <td class="table-light"><b>Abner de Santana Silva</b></td>
-                                    <td class="table-light"><a href="https://api.WhatsApp.com/send?phone=991375070" target="_blank"> 991375070 </a>
-                                    </td>
+                                <td  class="table-light" > <p> {{ nome }}  </p> </td>
+                                </td>
+                                <td  class="table-light"> <a href="https://api.WhatsApp.com/send?phone=55{{zap}}" target="_blank">  {{zap}} </a></td>
                                 </tr>
-                                <tr>
-                                    <td class="table-light"><b>Leandro Silveira Martins</b></td>
-                                    <td class="table-light"><b>95684255</b></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-light"><b>Clovis Barros Neto</b></td>
-                                    <td class="table-light"><b>911172755</b></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="table-light"><b>Carlos Chagas Souza</b></td>
-                                    <td class="table-light"><b>986559745</b></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="table-light"><b>Aristides Pacheco Gomes</b></td>
-                                    <td class="table-light"><b>915568779</b></td>
-                                </tr>
-                            </tbody>
+                                {% endfor %}
+                              </tbody>
                         </table>
                     </div>
 
                     <div class="col col-md-11 col-lg-6">
-                        <p class="h6 text-white"> Total de empresas : 121 </p>
+                        <p class="h6 text-white"> Total de empresas : {{tot_cnpjs}} </p>
                         <table class="table table-bordered  table-hover ">
                             <thead class="table-light">
                                 <tr>
@@ -189,29 +173,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for nome , zap  in empresas.items %}
                                 <tr>
-                                    <td class="table-light"><b>Nordestão LTDA</b></td>
-                                    <td class="table-light"><b>91375080</b></td>
+                                <td  class="table-light" > <p> {{ nome }}  </p> </td>
+                                </td>
+                                <td  class="table-light"> <a href="https://api.WhatsApp.com/send?phone=55{{zap}}" target="_blank">  {{zap}} </a></td>
                                 </tr>
-                                <tr>
-                                    <td class="table-light"><b>Favorito Supermercado</b></td>
-                                    <td class="table-light"><b>965846231</b></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-light"><b>Natal Shopping</b></td>
-                                    <td class="table-light"><b>99685412</b></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="table-light"><b>PotiMidia</b></td>
-                                    <td class="table-light"><b>99685963</b></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="table-light"><b>TV Cabugi</b></td>
-                                    <td class="table-light"><b>99685420</b></td>
-                                </tr>
-                            </tbody>
+                                {% endfor %}
+                              </tbody>
                         </table>
                     </div>
                 </div>

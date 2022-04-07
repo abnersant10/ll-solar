@@ -5,7 +5,7 @@ class cliente(models.Model):
     cpf_cnpj = models.CharField(primary_key=True, max_length=14)
     tipo_cliente = models.CharField(max_length=4)  # CPF ou CNPJ
     nome_completo = models.CharField(max_length=150)
-    whatsapp = models.CharField(max_length=11)
+    whatsapp = models.CharField(max_length=13)
     email = models.EmailField(max_length=100)
     endereco = models.CharField(max_length=100)
     numero = models.CharField(max_length=5)
