@@ -29,7 +29,17 @@ def clientes_cadastro(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
-
+        # receber os dados de cadastro cliente
+        cpf_cnpj = request.POST.get('cpf_cnpj')
+        nome_cli = request.POST.get('nome')
+        zap = request.POST.get('zap')
+        email = request.POST.get('email')
+        endereco = request.POST.get('endereco')
+        num = request.POST.get('num')
+        bairro = request.POST.get('bairro')
+        cidade = request.POST.get('cidade')
+        estado = request.POST.get('estado')
+        complemento = request.POST.get('complemento')
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome

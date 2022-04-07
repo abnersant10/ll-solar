@@ -129,40 +129,40 @@
                     <div class="row">
                         <div class="col-11 col-sm-5 ">
                             <label class="form-label text-white ">* CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)" required>
+                            <input type="text" class="form-control" placeholder="CPF ou CNPJ (Apenas Números)" name="cpf_cnpj" >
                         </div>
                         <div class=" col-11 col-sm-6 ">
                             <label class="form-label text-white ">* Nome Completo</label>
-                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia" required>
+                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia" name="nome" >
                         </div>
                         <!--Contato e Endereço -->
                         <div class=" col-5 col-sm-5 py-2">
                             <label class="form-label text-white ">* WhatsApp</label>
-                            <input type="tel" class="form-control" placeholder="84 9 9999 9999" required>
+                            <input type="tel" class="form-control" placeholder="84 9 9999 9999" name="zap" >
                         </div>
                         <div class=" col-6 col-sm-6 py-2">
                             <label class="form-label text-white ">E-mail</label>
-                            <input type="email" class="form-control" placeholder="email@email.com">
+                            <input type="email" class="form-control" placeholder="email@email.com" name="email">
                         </div>
                         <div class="col-11 col-sm-5">
                             <label class="form-label text-white ">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Logradouro">
+                            <input type="text" class="form-control" placeholder="Logradouro" name="endereco">
                         </div>
                         <div class="col-3 col-sm-2">
                             <label class="form-label text-white ">Número</label>
-                            <input type="tel" class="form-control" placeholder="Nº">
+                            <input type="tel" class="form-control" placeholder="Nº" name="num">
                         </div>
                         <div class="col-8 col-sm-4">
                             <label class="form-label text-white ">Bairro</label>
-                            <input type="text" class="form-control" placeholder="Ex: Lagoa Nova">
+                            <input type="text" class="form-control" placeholder="Ex: Lagoa Nova" name="bairro">
                         </div>
                         <div class="col-7 col-sm-5 py-2">
                             <label class="form-label text-white ">Cidade</label>
-                            <input type="text" class="form-control" placeholder="Ex: Natal">
+                            <input type="text" class="form-control" placeholder="Ex: Natal" name="cidade">
                         </div>
                         <div class="col-4 col-sm-2 py-2">
                             <label class="form-label text-white ">Estado</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="estado">
                                 <option selected>RN</option>
                                 <option value="PB">PB</option>
                                 <option value="CE">CE</option>
@@ -172,9 +172,9 @@
                     </div>
                     <div class="col-11 py-2">
                         <label class="form-label text-white ">Complemento</label>
-                        <textarea class="form-control" placeholder="Informações complementares" rows="2"></textarea>
+                        <textarea class="form-control" placeholder="Informações complementares" rows="2" name="complemento"></textarea>
                     </div>
-                    <button type="submit" class="my-4 btn btn-success ">
+                    <button type="submit" class="my-4 btn btn-success btn-lg ">
                         Cadastrar
                     </button>
                 </form>
