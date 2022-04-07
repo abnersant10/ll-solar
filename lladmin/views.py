@@ -6,12 +6,15 @@ from django.contrib.auth import *
 # library aux
 from validate_docbr import CPF, CNPJ
 import re
+
+from lladmin.models import cliente
 # Create your views here.
 
 
 def home(request):
     if request.method == 'POST':
-        cpf = request.POST.get('cpf')
+        cpf = str(request.POST.get('cpf'))
+        cpf = re.sub('[^0-9]', '', cpf)
         senha = request.POST.get('senha')
         # verrificar se CPF e Senha informada é igual no BD
         user = authenticate(request, username=cpf, password=senha)
@@ -34,11 +37,11 @@ def clientes_cadastro(request):
         sobre_nome = request.user.last_name
         # receber os dados de cadastro cliente
         save = False
-        cpf_cnpj = request.POST.get('cpf_cnpj')  # validar CPF CNPJ
+        cpf_cnpj = str(request.POST.get('cpf_cnpj'))  # validar CPF CNPJ
         # expressão regular para o codigo
         cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
         nome_cli = request.POST.get('nome')
-        zap = request.POST.get('zap')
+        zap = str(request.POST.get('zap'))
         # expressão regular para numero
         zap = re.sub('[^0-9]', '', zap)
         email = request.POST.get('email')
@@ -55,12 +58,16 @@ def clientes_cadastro(request):
             # salvar cliente como tipo CPF
             save = True
             tipo_cliente = 'CPF'
+
         if _cnpj.validate(cpf_cnpj) == True:
             # salvar cliente como tipo CNJP
             save = True
             tipo_cliente = 'CNPJ'
         if save == True:
-            print("CPF ou CNPJ Correto")
+            novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
+                                   email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
+            novo_cliente.save()
+            print("Cliente cadastrado com sucesso")
         else:
             print("CPF ou CNJP incorreto, tente novamente")
         print(zap)
