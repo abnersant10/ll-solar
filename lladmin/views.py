@@ -62,7 +62,7 @@ def clientes_cadastro(request):
             # salvar cliente como tipo CNJP
             save = True
             tipo_cliente = 'CNPJ'
-        else:
+        elif len(cpf_cnpj) > 0:
             messages.error(request, 'CPF ou CNPJ Inválido, tente novamente!')
         if save == True:
             novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
@@ -83,6 +83,13 @@ def clientes_consulta(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
+        # pegar a lista de todos os CPFs do BD
+        clientes = cliente.objects.values_list(
+            'tipo_cliente', 'nome_completo', 'whatsapp')
+        pessoas = clientes.filter(tipo_cliente='CPF')
+        empresas = clientes.filter(tipo_cliente='CNPJ')
+        print(pessoas)
+        print(empresas)
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome
