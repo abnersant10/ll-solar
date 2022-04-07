@@ -37,7 +37,6 @@ def clientes_cadastro(request):
         cpf_cnpj = request.POST.get('cpf_cnpj')  # validar CPF CNPJ
         # expressão regular para o codigo
         cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
-
         nome_cli = request.POST.get('nome')
         zap = request.POST.get('zap')
         # expressão regular para numero
@@ -53,9 +52,17 @@ def clientes_cadastro(request):
         _cpf = CPF()
         _cnpj = CNPJ()
         if _cpf.validate(cpf_cnpj) == True:
+            # salvar cliente como tipo CPF
+            save = True
             tipo_cliente = 'CPF'
         if _cnpj.validate(cpf_cnpj) == True:
+            # salvar cliente como tipo CNJP
+            save = True
             tipo_cliente = 'CNPJ'
+        if save == True:
+            print("CPF ou CNPJ Correto")
+        else:
+            print("CPF ou CNJP incorreto, tente novamente")
         print(zap)
         context = {
             'nome': nome,
