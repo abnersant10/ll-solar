@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import *
+# library aux
+from validate_docbr import CPF, CNPJ
+import re
 # Create your views here.
 
 
@@ -30,9 +33,15 @@ def clientes_cadastro(request):
         nome = request.user.first_name
         sobre_nome = request.user.last_name
         # receber os dados de cadastro cliente
-        cpf_cnpj = request.POST.get('cpf_cnpj')
+        save = False
+        cpf_cnpj = request.POST.get('cpf_cnpj')  # validar CPF CNPJ
+        # expressão regular para o codigo
+        cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
+
         nome_cli = request.POST.get('nome')
         zap = request.POST.get('zap')
+        # expressão regular para numero
+        zap = re.sub('[^0-9]', '', zap)
         email = request.POST.get('email')
         endereco = request.POST.get('endereco')
         num = request.POST.get('num')
@@ -40,6 +49,14 @@ def clientes_cadastro(request):
         cidade = request.POST.get('cidade')
         estado = request.POST.get('estado')
         complemento = request.POST.get('complemento')
+        # validação do CPF ou CNPJ
+        _cpf = CPF()
+        _cnpj = CNPJ()
+        if _cpf.validate(cpf_cnpj) == True:
+            tipo_cliente = 'CPF'
+        if _cnpj.validate(cpf_cnpj) == True:
+            tipo_cliente = 'CNPJ'
+        print(zap)
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome
