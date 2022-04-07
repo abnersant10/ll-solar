@@ -58,19 +58,18 @@ def clientes_cadastro(request):
             # salvar cliente como tipo CPF
             save = True
             tipo_cliente = 'CPF'
-
-        if _cnpj.validate(cpf_cnpj) == True:
+        elif _cnpj.validate(cpf_cnpj) == True:
             # salvar cliente como tipo CNJP
             save = True
             tipo_cliente = 'CNPJ'
+        else:
+            messages.error(request, 'CPF ou CNPJ Inválido, tente novamente!')
         if save == True:
             novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
                                    email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
             novo_cliente.save()
-            print("Cliente cadastrado com sucesso")
-        else:
-            print("CPF ou CNJP incorreto, tente novamente")
-        print(zap)
+            messages.success(request, 'Cliente cadastrado com suceesso!')
+
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome
