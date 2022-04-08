@@ -57,12 +57,12 @@ def clientes_cadastro(request):
         elif len(cpf_cnpj) > 0:
             messages.error(request, 'CPF ou CNPJ Inválido, tente novamente!')
 
-        if save == True and cpf_cnpj not in str(cliente.objects.values_list('cpf_cnpj')):
+        if save == True:
             novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
                                    email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
-            # novo_cliente.save()
+            novo_cliente.save()
             messages.success(request, 'Cliente cadastrado com suceesso!')
-        else:
+        if cpf_cnpj not in str(cliente.objects.values_list('cpf_cnpj')):
             messages.error(request, 'CPF ou CNPJ já está cadastrado!')
 
         context = {
@@ -127,6 +127,8 @@ def equipamentos(request):
             fabricante = request.POST.get('fabricante')
             modelo = request.POST.get('modelo')
             potencia = request.POST.get('potencia')
+            if potencia == '':
+                potencia = 0
             novo_eq = equipamento(tipo=tipo, descricao=descricao,
                                   fabricante=fabricante, modelo=modelo, potencia=potencia)
             novo_eq.save()
