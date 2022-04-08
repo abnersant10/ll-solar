@@ -85,7 +85,7 @@ def clientes_consulta(request):
         sobre_nome = request.user.last_name
         # pegar a lista de todos os CPFs do BD
         clientes = cliente.objects.values_list(
-            'tipo_cliente', 'nome_completo', 'whatsapp')
+            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento')
         cpfs = clientes.filter(tipo_cliente='CPF')
         cnpjs = clientes.filter(tipo_cliente='CNPJ')
         tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
@@ -93,9 +93,9 @@ def clientes_consulta(request):
         empresas = {}
         # listar (pessoas | empresas) + telefone
         for i in cpfs:
-            pessoas[i[1]] = i[2]
+            pessoas[i[2]] = i[3]
         for i in cnpjs:
-            empresas[i[1]] = i[2]
+            empresas[i[2]] = i[3]
 
         context = {
             'nome': nome,
@@ -105,7 +105,13 @@ def clientes_consulta(request):
             'tot_cpfs': tot_cpfs,
             'tot_cnpjs': tot_cnpjs
         }
-        return render(request, "clientes-consulta.html", context)
+        # consulta detalhada do cliente
+        if request.method == 'POST':
+            consulta_cliente = request.POST.get('consulta_cliente')
+            consulta_cliente = clientes.get(
+                nome_completo__contains=consulta_cliente)
+            print(consulta_cliente)
+            return render(request, "clientes-consulta.html", context)
     else:
         return redirect('home')
 
