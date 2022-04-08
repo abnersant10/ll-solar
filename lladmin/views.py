@@ -97,6 +97,7 @@ def clientes_consulta(request):
         for i in cnpjs:
             empresas[i[2]] = i[3]
         consulta = False
+        consulta_cliente = ''
         # consulta detalhada do cliente
         if request.method == 'POST':
             consulta_cliente = request.POST.get('consulta_cliente')
@@ -106,6 +107,7 @@ def clientes_consulta(request):
                 consulta = True
 
         context = {
+            'consulta_cliente': consulta_cliente,
             'nome': nome,
             'sobre_nome': sobre_nome,
             'pessoas': pessoas,
@@ -113,7 +115,7 @@ def clientes_consulta(request):
             'tot_cpfs': tot_cpfs,
             'tot_cnpjs': tot_cnpjs,
             'consulta': consulta,
-            'consulta_cliente': consulta_cliente
+
         }
         return render(request, "clientes-consulta.html", context)
     else:
