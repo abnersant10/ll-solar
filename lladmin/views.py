@@ -7,7 +7,7 @@ from django.contrib.auth import *
 from validate_docbr import CPF, CNPJ
 import re
 
-from lladmin.models import cliente
+from lladmin.models import cliente, equipamento
 # Create your views here.
 
 
@@ -115,14 +115,13 @@ def clientes_consulta(request):
             'tot_cpfs': tot_cpfs,
             'tot_cnpjs': tot_cnpjs,
             'consulta': consulta,
-
         }
         return render(request, "clientes-consulta.html", context)
     else:
         return redirect('home')
 
 
-def equipamentos_cadastro(request):
+def equipamentos(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
@@ -130,6 +129,14 @@ def equipamentos_cadastro(request):
             'nome': nome,
             'sobre_nome': sobre_nome
         }
+        if request.method == 'POST':
+            # cadastrar equipamento
+            tipo = request.POST.get('tipo')
+            descricao = request.POST.get('descricao')
+            fabricante = request.POST.get('fabricante')
+            modelo = request.POST.get('modelo')
+            potencia = request.POST.get('potencia')
+            print(tipo, descricao, fabricante, modelo, potencia)
         return render(request, "equipamentos.html", context)
     else:
         return redirect('home')
