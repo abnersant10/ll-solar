@@ -127,6 +127,7 @@ def equipamentos(request):
             novo_eq = equipamento(tipo=tipo, descricao=descricao,
                                   fabricante=fabricante, modelo=modelo, potencia=potencia)
             novo_eq.save()
+            messages.success(request, 'Cadastro realizado com sucesso!')
         return render(request, "equipamentos.html", context)
     else:
         return redirect('home')
