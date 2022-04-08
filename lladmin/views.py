@@ -7,7 +7,6 @@ from django.contrib.auth import *
 from validate_docbr import CPF, CNPJ
 import re
 from lladmin.models import cliente, equipamento
-# Create your views here.
 
 
 def home(request):
@@ -97,7 +96,6 @@ def clientes_consulta(request):
                 consulta_cliente = clientes.filter(
                     nome_completo__contains=consulta_cliente)
                 consulta = True
-
         context = {
             'consulta_cliente': consulta_cliente,
             'nome': nome,
@@ -117,9 +115,12 @@ def equipamentos(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
+        equipamentos = equipamento.objects.values_list(
+            'tipo', 'descricao', 'fabricante', 'modelo', 'potencia', named=True)
         context = {
             'nome': nome,
-            'sobre_nome': sobre_nome
+            'sobre_nome': sobre_nome,
+            'equipamentos': equipamentos
         }
         if request.method == 'POST':
             tipo = request.POST.get('tipo')
