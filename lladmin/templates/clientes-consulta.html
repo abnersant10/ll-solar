@@ -135,7 +135,23 @@
                         </button>
                     <div>
                 </form>
+              
+                {% if consulta %}
+                {% for obj in consulta_cliente %}
+                          <div class="col-md-11 alert alert-warning alert-dismissible fade show " role="alert">
+                                <p><strong>Nome:</strong> {{obj.nome_completo}} </p>
+                                <p><strong>CPF/CNPJ:</strong> {{obj.cpf_cnpj}} </p>
+                                
+                                <p><strong>WhatsApp:</strong> <a href="https://api.WhatsApp.com/send?phone=55{{obj.whatsapp}}" target="_blank">  {{obj.whatsapp}} </a>   </p>
 
+                                <p><strong>E-mail:</strong> {{obj.email}}</strong> </p>
+                                <p><strong>Endereço:</strong> {{obj.endereco}}, Nº : {{obj.numero}}. {{obj.bairro}} - {{obj.cidade}} - {{obj.estado}}  </p>
+                                <p><strong>Informações complementares:</strong> {{obj.complemento}} </p>
+                            
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                          {% endfor %}
+                {% endif %}
 
             
                 <div class="row px-2">

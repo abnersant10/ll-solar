@@ -85,7 +85,7 @@ def clientes_consulta(request):
         sobre_nome = request.user.last_name
         # pegar a lista de todos os CPFs do BD
         clientes = cliente.objects.values_list(
-            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento')
+            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', named=True)
         cpfs = clientes.filter(tipo_cliente='CPF')
         cnpjs = clientes.filter(tipo_cliente='CNPJ')
         tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
@@ -96,6 +96,16 @@ def clientes_consulta(request):
             pessoas[i[2]] = i[3]
         for i in cnpjs:
             empresas[i[2]] = i[3]
+        consulta = False
+        # consulta detalhada do cliente
+        if request.method == 'POST':
+            consulta_cliente = request.POST.get('consulta_cliente')
+            consulta_cliente = clientes.filter(
+                nome_completo__contains=consulta_cliente)
+            consulta = True
+            # print(clientes)
+            # for i in consulta_cliente:
+            #    print(i)
 
         context = {
             'nome': nome,
@@ -103,15 +113,11 @@ def clientes_consulta(request):
             'pessoas': pessoas,
             'empresas': empresas,
             'tot_cpfs': tot_cpfs,
-            'tot_cnpjs': tot_cnpjs
+            'tot_cnpjs': tot_cnpjs,
+            'consulta': consulta,
+            'consulta_cliente': consulta_cliente
         }
-        # consulta detalhada do cliente
-        if request.method == 'POST':
-            consulta_cliente = request.POST.get('consulta_cliente')
-            consulta_cliente = clientes.filter(
-                nome_completo__contains=consulta_cliente)
-            print(consulta_cliente)
-            return render(request, "clientes-consulta.html", context)
+        return render(request, "clientes-consulta.html", context)
     else:
         return redirect('home')
 
