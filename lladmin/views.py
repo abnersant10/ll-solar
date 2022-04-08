@@ -108,7 +108,7 @@ def clientes_consulta(request):
         # consulta detalhada do cliente
         if request.method == 'POST':
             consulta_cliente = request.POST.get('consulta_cliente')
-            consulta_cliente = clientes.get(
+            consulta_cliente = clientes.filter(
                 nome_completo__contains=consulta_cliente)
             print(consulta_cliente)
             return render(request, "clientes-consulta.html", context)
