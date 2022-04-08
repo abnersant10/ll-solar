@@ -34,7 +34,7 @@ def clientes_cadastro(request):
         nome = request.user.first_name
         sobre_nome = request.user.last_name
         save = False
-        cpf_cnpj = str(request.POST.get('cpf_cnpj'))  # validar CPF CNPJ
+        cpf_cnpj = str(request.POST.get('cpf_cnpj'))
         cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
         nome_cli = request.POST.get('nome')
         zap = str(request.POST.get('zap'))
@@ -56,11 +56,14 @@ def clientes_cadastro(request):
             tipo_cliente = 'CNPJ'
         elif len(cpf_cnpj) > 0:
             messages.error(request, 'CPF ou CNPJ Inválido, tente novamente!')
-        if save == True:
+
+        if save == True and cpf_cnpj not in str(cliente.objects.values_list('cpf_cnpj')):
             novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
                                    email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
-            novo_cliente.save()
+            # novo_cliente.save()
             messages.success(request, 'Cliente cadastrado com suceesso!')
+        else:
+            messages.error(request, 'CPF ou CNPJ já está cadastrado!')
 
         context = {
             'nome': nome,

@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Clientes</title>
-    <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
     <style>
         body {
             
@@ -37,7 +30,6 @@
            
                 }
     </style>
-
     <script>
         $(document).ready(function(){
             $(".dropdown").hover(function(){
@@ -52,7 +44,6 @@
 
 <body>
     <div class="container ">
-        <!--Nav Bar -->
         <nav class="navbar row bg my-2"> <br>
             <div class="col-9 col-md-10 col-lg-11">
                 <a class="navbar-brand h4 text-light" href="#">Bem-vindo(a): {{nome}} {{sobre_nome}}</a>
@@ -61,7 +52,6 @@
                 <a href="{% url 'logout' %}" class=" btn btn-warning  text-secondary">SAIR</a>
             </div>
         </nav>
-
         <div class="row my-2 bg-secondary">
             <nav class="navbar navbar-expand-lg navbar-light menu-nav">
                   <a class="navbar-brand text-light" href="#">Menu</a>
@@ -84,7 +74,6 @@
                           <li class="nav-item ">
                             <a class="nav-link text-light" href="{% url 'equipamentos' %}">Equipamentos</a>
                           </li>
-    
                           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Orçamento</a>
                             <ul class="dropdown-menu">
@@ -95,7 +84,6 @@
                               </li>
                             </ul>
                           </li>
-    
                           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatórios</a>
                             <ul class="dropdown-menu">
@@ -115,7 +103,6 @@
 
         
             <div class="row bg">
-                <!-- login -->
                 <form method="post" class="col mx-2 my-2">
                     {% csrf_token %}
                     <div class="row">
@@ -149,8 +136,6 @@
                             <label class="form-label text-white ">Potência em Watts</label>
                             <input type="text" class="form-control" placeholder="Apenas números" name="potencia" >
                         </div>
-
-
                     </div>
 
                     {% if messages %}
@@ -163,21 +148,13 @@
                       {% endif %}
                     {% endfor %}
                   {% endif %}
-
                     <button type="submit" class="my-4 btn btn-success ">
                         Cadastrar
                     </button>
-                
                 </form>
-                
-                
-
-
                 <div class="col-md-12">
                 <p class="text-warning h6 ">  Equipamentos cadastrados </p>
                 <hr class="text-light">
-                   
-                
                 <table class="table table-bordered  table-hover ">
                     <thead class="table-light">
                         <tr>

@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Clientes</title>
-    <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
     <style>
         body {
             
@@ -61,9 +56,6 @@
                 <a href="{% url 'logout' %}" class=" btn btn-warning  text-secondary">SAIR</a>
             </div>
         </nav>
-
-       
-
         <div class="row my-2 bg-secondary">
             <nav class="navbar navbar-expand-lg navbar-light menu-nav">
                   <a class="navbar-brand text-light" href="#">Menu</a>
@@ -114,8 +106,6 @@
                   </div>
               </nav>
             </div>
-
-        
             <div class="row bg">
                 <!-- login -->
                 <form method="post" class="mx-2 my-2">
@@ -131,11 +121,10 @@
                       {% endif %}
                     {% endfor %}
                   {% endif %}
-
                   {% if messages %}
                   {% for message in messages %}
                     {%if message.tags == 'error' %}
-                <div class="col-md-7 my-4 alert alert-warning alert-dismissible fade show " role="alert">
+                <div class="col-md-7 my-4 alert alert-danger alert-dismissible fade show " role="alert">
                   <strong>Atenção!</strong> {{message}}
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -152,16 +141,16 @@
                     <div class="row">
                         <div class="col-11 col-sm-5 ">
                             <label class="form-label text-white ">* CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" autofocus required>
+                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" autofocus >
                         </div>
                         <div class=" col-11 col-sm-6 ">
                             <label class="form-label text-white ">* Nome Completo</label>
-                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia" name="nome" required>
+                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia" name="nome" >
                         </div>
                         <!--Contato e Endereço -->
                         <div class=" col-5 col-sm-5 py-2">
                             <label class="form-label text-white ">* WhatsApp</label>
-                            <input type="tel" class="form-control" placeholder="84 9 9999-9999" name="zap" required>
+                            <input type="tel" class="form-control" placeholder="84 9 9999-9999" name="zap" >
                         </div>
                         <div class=" col-6 col-sm-6 py-2">
                             <label class="form-label text-white ">E-mail</label>
