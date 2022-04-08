@@ -100,12 +100,10 @@ def clientes_consulta(request):
         # consulta detalhada do cliente
         if request.method == 'POST':
             consulta_cliente = request.POST.get('consulta_cliente')
-            consulta_cliente = clientes.filter(
-                nome_completo__contains=consulta_cliente)
-            consulta = True
-            # print(clientes)
-            # for i in consulta_cliente:
-            #    print(i)
+            if len(consulta_cliente) > 0:
+                consulta_cliente = clientes.filter(
+                    nome_completo__contains=consulta_cliente)
+                consulta = True
 
         context = {
             'nome': nome,
