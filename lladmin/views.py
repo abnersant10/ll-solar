@@ -130,6 +130,10 @@ def equipamentos(request):
             potencia = request.POST.get('potencia')
             if potencia == '':
                 potencia = 0
+            if fabricante == '':
+                fabricante = '-'
+            if modelo == '':
+                modelo = '-'
             novo_eq = equipamento(tipo=tipo, descricao=descricao,
                                   fabricante=fabricante, modelo=modelo, potencia=potencia)
             novo_eq.save()

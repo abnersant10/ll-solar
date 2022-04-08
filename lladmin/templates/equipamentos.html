@@ -124,7 +124,7 @@
                 <div class="col-md-12">
                 <p class="text-warning h6 ">  Equipamentos cadastrados </p>
                 <hr class="text-light">
-                <table class="table table-bordered  table-hover ">
+                <table class="table table-bordered  table-hover col-md-11 ">
                     <thead class="table-light"><tr><td class="table-secondary"><b>Módulos</b></td>
                             <td class="table-secondary"><b>Fabricante</b></td>
                             <td class="table-secondary"><b>Modelo</b></td>
@@ -134,10 +134,10 @@
                             {%for i in equipamentos%}{%if i.tipo == "Módulo" %}<tr><td class="table-light"><b>{{i.descricao}}</b></td>
                             <td class="table-light"><b>{{i.fabricante}}</b></td>
                             <td class="table-light"><b>{{i.modelo}}</b></td>
-                            <td class="table-light"><b>{{i.potencia}}Wa</b></td></tr>{%endif%}{%endfor%}
+                            <td class="table-light"><b>{{i.potencia}}W</b></td></tr>{%endif%}{%endfor%}
                     </tbody>
                 </table>
-                <table class="table table-bordered  table-hover ">
+                <table class="table table-bordered  table-hover col-md-1  ">
                     <thead class="table-light"><tr><td class="table-secondary"><b>Inversores</b></td>
                             <td class="table-secondary"><b>Fabricante</b></td>
                             <td class="table-secondary"><b>Modelo</b></td>
@@ -148,7 +148,7 @@
                         <td class="table-light"><b>{{i.descricao}}</b></td>
                         <td class="table-light"><b>{{i.fabricante}}</b></td>
                         <td class="table-light"><b>{{i.modelo}}</b></td>
-                        <td class="table-light"><b>{{i.potencia}}Wa</b></td></tr> 
+                        <td class="table-light"><b>{{i.potencia}}W</b></td></tr> 
                         {%endif%}{%endfor%}
                     </tbody>
                 </table>
