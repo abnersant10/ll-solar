@@ -6,7 +6,6 @@ from django.contrib.auth import *
 # library aux
 from validate_docbr import CPF, CNPJ
 import re
-
 from lladmin.models import cliente, equipamento
 # Create your views here.
 
@@ -16,7 +15,6 @@ def home(request):
         cpf = str(request.POST.get('cpf'))
         cpf = re.sub('[^0-9]', '', cpf)
         senha = request.POST.get('senha')
-        # verrificar se CPF e Senha informada é igual no BD
         user = authenticate(request, username=cpf, password=senha)
         if user is not None:
             login(request, user)
@@ -35,14 +33,11 @@ def clientes_cadastro(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
-        # receber os dados de cadastro cliente
         save = False
         cpf_cnpj = str(request.POST.get('cpf_cnpj'))  # validar CPF CNPJ
-        # expressão regular para o codigo
         cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
         nome_cli = request.POST.get('nome')
         zap = str(request.POST.get('zap'))
-        # expressão regular para numero
         zap = re.sub('[^0-9]', '', zap)
         email = request.POST.get('email')
         endereco = request.POST.get('endereco')
@@ -51,15 +46,12 @@ def clientes_cadastro(request):
         cidade = request.POST.get('cidade')
         estado = request.POST.get('estado')
         complemento = request.POST.get('complemento')
-        # validação do CPF ou CNPJ
         _cpf = CPF()
         _cnpj = CNPJ()
         if _cpf.validate(cpf_cnpj) == True:
-            # salvar cliente como tipo CPF
             save = True
             tipo_cliente = 'CPF'
         elif _cnpj.validate(cpf_cnpj) == True:
-            # salvar cliente como tipo CNJP
             save = True
             tipo_cliente = 'CNPJ'
         elif len(cpf_cnpj) > 0:
@@ -83,7 +75,6 @@ def clientes_consulta(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
         sobre_nome = request.user.last_name
-        # pegar a lista de todos os CPFs do BD
         clientes = cliente.objects.values_list(
             'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', named=True)
         cpfs = clientes.filter(tipo_cliente='CPF')
@@ -91,14 +82,12 @@ def clientes_consulta(request):
         tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
         pessoas = {}
         empresas = {}
-        # listar (pessoas | empresas) + telefone
         for i in cpfs:
             pessoas[i[2]] = i[3]
         for i in cnpjs:
             empresas[i[2]] = i[3]
         consulta = False
         consulta_cliente = ''
-        # consulta detalhada do cliente
         if request.method == 'POST':
             consulta_cliente = request.POST.get('consulta_cliente')
             if len(consulta_cliente) > 0:
@@ -130,13 +119,14 @@ def equipamentos(request):
             'sobre_nome': sobre_nome
         }
         if request.method == 'POST':
-            # cadastrar equipamento
             tipo = request.POST.get('tipo')
             descricao = request.POST.get('descricao')
             fabricante = request.POST.get('fabricante')
             modelo = request.POST.get('modelo')
             potencia = request.POST.get('potencia')
-            print(tipo, descricao, fabricante, modelo, potencia)
+            novo_eq = equipamento(tipo=tipo, descricao=descricao,
+                                  fabricante=fabricante, modelo=modelo, potencia=potencia)
+            novo_eq.save()
         return render(request, "equipamentos.html", context)
     else:
         return redirect('home')
