@@ -20,46 +20,18 @@
 <body>
     <div class="container">
         <div class="row py-2">
-            <div class="col-sm-5 bg-light">
-                <img src="static/img/logo.svg" class="logo">
-            </div>
-            <div class="col-sm-7 bg">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="py-5 px-5">
-                        <span>&#128100;</span>
-                        <label class="py-3 text-light h6">Login (CPF)</label>
-                        <input type="text" class="form-control" placeholder="CPF : 000.000.000-000" name="cpf" required
+            <div class="col-sm-5 bg-light"><img src="static/img/logo.svg" class="logo"></div>
+            <div class="col-sm-7 bg"><form method="post">
+                {% csrf_token %}<div class="py-5 px-5"><span>&#128100;</span>
+                <label class="py-3 text-light h6">Login (CPF)</label>
+                <input type="text" class="form-control" placeholder="CPF : 000.000.000-000" name="cpf" required
                             autofocus />
-
-                        <span>&#128273;</span>
-                        <label class="py-3 text-light h6">Senha</label>
-                        <input type="password" class="form-control " placeholder="Digite a senha" name="senha"
-                            required />
-
-                            {% if messages %}
-                            {% for message in messages %}
-                              {%if message.tags == 'error' %}
-                          <div class="col-md-7 my-4 alert alert-warning alert-dismissible fade show " role="alert">
-                            <strong>Atenção!</strong> {{message}}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>
-                              {% endif %}
-                            {% endfor %}
-                          {% endif %}
-
-                        <button type="submit" class="btn btn-success my-3">
-                            ENTRAR
-                        </button>
-                </form>
-            </div>
-        </div>
-        <footer class="col bg my-2 text-light text-center">
-            <br>
-            <h6> LL Solar - Todos os Direitos Reservados - 2022 </h6>
-            <br>
-        </footer>
-    </div>
-    </div>
+                <span>&#128273;</span><label class="py-3 text-light h6">Senha</label><input type="password" class="form-control " placeholder="Digite a senha" name="senha"required />
+                {% if messages %}{% for message in messages %}{%if message.tags == 'error' %}<div class="col-md-7 my-4 alert alert-warning alert-dismissible fade show " role="alert"><strong>Atenção!</strong> {{message}}<button type="button" class="btn-close"data-bs-dismiss="alert" aria-label="Close"></button></div>{% endif %}{% endfor %}{% endif %}
+                <button type="submit" class="btn btn-success my-3">ENTRAR</button>
+                </form></div></div>
+    <footer class="col bg my-2 text-light text-center">
+        <br><h6> LL Solar - Todos os Direitos Reservados - 2022 </h6><br>
+    </footer></div></div>
 </body>
 </html>

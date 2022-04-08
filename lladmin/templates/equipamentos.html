@@ -47,19 +47,8 @@
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
-    
                   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                      
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-light  " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clientes</a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{% url 'clientes-cadastro' %}">Cadastrar</a></li>
-                              <li><a class="dropdown-item" href="{% url 'clientes-consulta' %}">Consultar</a></li>
-                              </li>
-                            </ul>
-                          </li>
-    
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"><li class="nav-item dropdown "><a class="nav-link dropdown-toggle text-light  " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clientes</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="{% url 'clientes-cadastro' %}">Cadastrar</a></li><li><a class="dropdown-item" href="{% url 'clientes-consulta' %}">Consultar</a></li></li></ul></li>
                           <li class="nav-item ">
                             <a class="nav-link text-light" href="{% url 'equipamentos' %}">Equipamentos</a>
                           </li>
@@ -126,17 +115,8 @@
                             <input type="number" class="form-control" placeholder="Apenas números" name="potencia" >
                         </div>
                     </div>
-
-                    {% if messages %}
-                    {% for message in messages %}
-                      {%if message.tags == 'success' %}
-                  <div class="col-md-7 my-4 alert alert-warning alert-dismissible fade show " role="alert">
-                    <strong>Atenção!</strong> {{message}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
+                    {% if messages %}{% for message in messages %}{%if message.tags == 'success' %}<div class="col-md-7 my-4 alert alert-warning alert-dismissible fade show " role="alert"><strong>Atenção!</strong> {{message}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>{% endif %}{% endfor %}{% endif %}
                     <button type="submit" class="my-4 btn btn-success ">
                         Cadastrar
                     </button>
@@ -144,42 +124,24 @@
                 <div class="col-md-12">
                 <p class="text-warning h6 ">  Equipamentos cadastrados </p>
                 <hr class="text-light">
-
-
-                
-
-
                 <table class="table table-bordered  table-hover ">
-                    <thead class="table-light">
-                        <tr>
-                            <td class="table-secondary"><b>Módulos</b></td>
+                    <thead class="table-light"><tr><td class="table-secondary"><b>Módulos</b></td>
                             <td class="table-secondary"><b>Fabricante</b></td>
                             <td class="table-secondary"><b>Modelo</b></td>
                             <td class="table-secondary"><b>Potencia</b></td>
-                        </tr>
-                    </thead>
+                        </tr></thead>
                     <tbody>
-                            {%for i in equipamentos%}
-                            {%if i.tipo == "Módulo" %}
-                            <tr>
-                            <td class="table-light"><b>{{i.descricao}}</b></td>
+                            {%for i in equipamentos%}{%if i.tipo == "Módulo" %}<tr><td class="table-light"><b>{{i.descricao}}</b></td>
                             <td class="table-light"><b>{{i.fabricante}}</b></td>
                             <td class="table-light"><b>{{i.modelo}}</b></td>
-                            <td class="table-light"><b>{{i.potencia}}Wa</b></td>
-                            </tr> 
-                            {%endif%}
-                            {%endfor%}
+                            <td class="table-light"><b>{{i.potencia}}Wa</b></td></tr>{%endif%}{%endfor%}
                     </tbody>
                 </table>
-
                 <table class="table table-bordered  table-hover ">
-                    <thead class="table-light">
-                        <tr>
-                            <td class="table-secondary"><b>Inversores</b></td>
+                    <thead class="table-light"><tr><td class="table-secondary"><b>Inversores</b></td>
                             <td class="table-secondary"><b>Fabricante</b></td>
                             <td class="table-secondary"><b>Modelo</b></td>
-                            <td class="table-secondary"><b>Potencia</b></td>
-                        </tr>
+                            <td class="table-secondary"><b>Potencia</b></td></tr>
                     </thead>
                     <tbody>
                         {%for i in equipamentos%}{%if i.tipo == "Inversor" %}<tr>
