@@ -1,1 +1,1 @@
-web: gunicorn llsolar.wsgi
+web: gunicorn llsolar.wsgi --log-file -
