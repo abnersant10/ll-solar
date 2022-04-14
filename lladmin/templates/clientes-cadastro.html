@@ -19,7 +19,9 @@
             margin-top: 0;
         }
     </style>
-    <script>$(document).ready(function(){$(".dropdown").hover(function(){var dropdownMenu = $(this).children(".dropdown-menu");if(dropdownMenu.is(":visible")){dropdownMenu.parent().toggleClass("open");}});});</script>
+    <script>
+        $(document).ready(function(){$(".dropdown").hover(function(){var dropdownMenu = $(this).children(".dropdown-menu");if(dropdownMenu.is(":visible")){dropdownMenu.parent().toggleClass("open");}});});
+    </script>
 </head>
 <body>
     <div class="container ">
@@ -47,7 +49,7 @@
                           </li>
     
                           <li class="nav-item ">
-                            <a class="nav-link text-light" href="{% url 'equipamentos' %}">Equipamentos</a>
+                            <a class="nav-link text-light" href="{% url 'equipamentos' %}">Estoque</a>
                           </li>
     
                           <li class="nav-item dropdown">
@@ -94,29 +96,36 @@
                             <label class="form-label text-white ">* WhatsApp</label>
                             <input type="tel" class="form-control" placeholder="84 9 9999-9999" name="zap" ></div>
                         <div class=" col-6 col-sm-6 py-2">
-                            <label class="form-label text-white ">E-mail</label>
+                            <label for="cep" class="form-label text-white ">E-mail</label>
                             <input type="email" class="form-control" placeholder="email@email.com" name="email"></div>
-                        <div class="col-11 col-sm-5">
-                            <label class="form-label text-white ">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Logradouro" name="endereco"></div>
-                        <div class="col-3 col-sm-2">
-                            <label class="form-label text-white ">Número</label>
-                            <input type="tel" class="form-control" placeholder="Nº" name="num"></div>
-                        <div class="col-8 col-sm-4">
-                            <label class="form-label text-white ">Bairro</label>
-                            <input type="text" class="form-control" placeholder="Ex: Lagoa Nova" name="bairro"></div>
+
+                        <div class="col-5 col-sm-2">
+                                <label for="cep" class="form-label text-white ">CEP</label>
+                                <input id="cep" type="text" class="form-control" placeholder="12345-000" name="cep"></div>
+                        <div class="py col-8 col-sm-3">
+                                <label for="bairro" class="form-label text-white ">Bairro</label>
+                                <input id="bairro" type="text" class="form-control" placeholder="Ex: Lagoa Nova" name="bairro"></div>
+                        <div class="col-10 col-sm-6">
+                            <label for="logradouro"  class="form-label text-white ">Endereço</label>
+                            <input id="logradouro" type="text" class="form-control" placeholder="Logradouro" name="endereco" ></div>
                         <div class="col-7 col-sm-5 py-2">
-                            <label class="form-label text-white ">Cidade</label>
-                            <input type="text" class="form-control" placeholder="Ex: Natal" name="cidade"></div>
+                            <label for="cidaded" class="form-label text-white ">Cidade</label>
+                            <input id="cidade" type="text" class="form-control" placeholder="Ex: Natal" name="cidade" ></div>
                         <div class="col-4 col-sm-2 py-2">
-                            <label class="form-label text-white ">Estado</label>
-                            <select class="form-select" aria-label="Default select example" name="estado">
-                                <option selected>RN</option>
+                            <label label="uf" class="form-label text-white ">Estado</label>
+                            <select id="uf" class="form-select" aria-label="Default select example" name="estado">
+                                <option value="RN">RN</option>
                                 <option value="PB">PB</option>
                                 <option value="CE">CE</option>
                                 <option value="PE">PE</option>
+                                <option value="PE">AL</option>
+                                <option value="PE">MA</option>
+                                <option value="PE">BA</option>
                             </select>
                         </div>
+                        <div class="col-3 col-sm-2 py-2">
+                            <label for="numero" class="form-label text-white ">Número</label>
+                            <input id="numero" type="tel" class="form-control" placeholder="Nº" name="num"></div>
                     </div>
                     <div class="col-11 py-2">
                         <label class="form-label text-white ">Complemento</label>
@@ -125,5 +134,20 @@
                     </button></form></div>
             <footer class="row text-center text-light bg my-2 py-4"><br><h6> LL Solar - Todos os Direitos Reservados - {% now "Y" %}</h6><br></footer>
         </div></div>
+        <script type="text/javascript">
+            jQuery("#cep").focusout(function(){
+                jQuery.ajax({
+                    url: 'https://viacep.com.br/ws/'+jQuery(this).val()+'/json/',
+                    dataType: 'json',
+                    success: function(resposta){
+                        jQuery("#logradouro").val(resposta.logradouro);
+                        jQuery("#bairro").val(resposta.bairro);
+                        jQuery("#cidade").val(resposta.localidade);
+                        jQuery("#uf").val(resposta.uf);
+                        jQuery("#numero").focus();
+                    }
+                });
+            });
+        </script>
 </body>
 </html>
