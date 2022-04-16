@@ -3,8 +3,6 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import *
-import json
-from django.http import JsonResponse
 # library aux
 from validate_docbr import CPF, CNPJ
 import re
