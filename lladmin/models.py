@@ -7,6 +7,7 @@ class cliente(models.Model):
     nome_completo = models.CharField(max_length=150)
     whatsapp = models.CharField(max_length=13)
     email = models.EmailField(max_length=100)
+    cep = models.CharField(max_length=12, default=0)
     endereco = models.CharField(max_length=100)
     numero = models.CharField(max_length=5)
     bairro = models.CharField(max_length=100)

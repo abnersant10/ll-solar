@@ -78,7 +78,7 @@ def clientes_consulta(request):
         nome = request.user.first_name
         sobre_nome = request.user.last_name
         clientes = cliente.objects.values_list(
-            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', named=True)
+            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', named=True)
         cpfs = clientes.filter(tipo_cliente='CPF')
         cnpjs = clientes.filter(tipo_cliente='CNPJ')
         tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
