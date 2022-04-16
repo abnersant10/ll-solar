@@ -130,7 +130,199 @@
                     <div class="col-11 py-2">
                         <label class="form-label text-white ">Complemento</label>
                         <textarea class="form-control" placeholder="Informações complementares" rows="2" name="complemento"></textarea>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF Titular anterior</label>
+                            <input type="text"  class="form-control" placeholder="CPF Titular anterior">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato anterior</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                        <div class="col-1">
+                            <label class="form-label text-white">Khw</label>
+                            <input type="text"  class="form-control" placeholder="Khw">
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF Titular Atual</label>
+                            <input type="text"  class="form-control" placeholder="CPF Titular anterior">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato atual</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                    </div><br>
+
+                    <!-- CONTAS ADICIONAIS-->
+
+                    <div class="row-6">
+                    <input type="button" class="btn btn-success" id="btn_teste" value="Adicionar outras contas"></div>
+                    
+                    <div class="row" id="conta1" style="display: none;">
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF</label>
+                            <input type="text"  class="form-control" placeholder="CPF">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                        <div class="col-1">
+                            <label class="form-label text-white">Khw</label>
+                            <input type="text"  class="form-control" placeholder="Khw">
+                        </div>
+                        <div class="col-2 py-2"><br>
+                            <input type="button" class="btn btn-success" value="+" id="add2">
+                            <input type="button" class="btn btn-danger" value="-" id="rem1">
+                        </div>
+
                     </div>
+                    <div class="row" id="conta2" style="display: none;">
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF</label>
+                            <input type="text"  class="form-control" placeholder="CPF">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                        <div class="col-1">
+                            <label class="form-label text-white">Khw</label>
+                            <input type="text"  class="form-control" placeholder="Khw">
+                        </div>
+                        <div class="col-2 py-2"><br>
+                            <input type="button" class="btn btn-success" value="+" id="add3">
+                            <input type="button" class="btn btn-danger" value="-" id="rem2">
+                        </div>
+
+                    </div>
+                    
+                    <div class="row" id="conta3" style="display: none;">
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF</label>
+                            <input type="text"  class="form-control" placeholder="CPF">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                        <div class="col-1">
+                            <label class="form-label text-white">Khw</label>
+                            <input type="text"  class="form-control" placeholder="Khw">
+                        </div>
+                        <div class="col-2 py-2"><br>
+                            <input type="button" class="btn btn-success" value="+" id="add4">
+                            <input type="button" class="btn btn-danger" value="-" id="rem3">
+                        </div>
+
+                    </div>
+
+                    <div class="row" id="conta4" style="display: none;">
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF</label>
+                            <input type="text"  class="form-control" placeholder="CPF">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                        <div class="col-1">
+                            <label class="form-label text-white">Khw</label>
+                            <input type="text"  class="form-control" placeholder="Khw">
+                        </div>
+                        <div class="col-2 py-2"><br>
+                            <input type="button" class="btn btn-success" value="+" id="add5">
+                            <input type="button" class="btn btn-danger" value="-"id="rem4">
+                        </div>
+
+                    </div>
+
+                    <div class="row" id="conta5" style="display: none;">
+                        <div class="col-3">
+                            <label class="form-label text-white">CPF</label>
+                            <input type="text"  class="form-control" placeholder="CPF">
+                        </div>
+                        <div class="col-2">
+                            <label class="form-label text-white">Conta contrato</label>
+                            <input type="text"  class="form-control" placeholder="Conta contrato">
+                        </div>
+                        <div class="col-1">
+                            <label class="form-label text-white">Khw</label>
+                            <input type="text"  class="form-control" placeholder="Khw">
+                        </div>
+                        <div class="col-2 py-2"><br>
+                            <input type="button" class="btn btn-danger" value="-" id="rem5">
+                        </div>
+
+                    </div>
+
+
+                    <script>
+                        var btn = document.getElementById("btn_teste");
+                        var conta1 = document.getElementById("conta1");
+                        var conta2 = document.getElementById("conta2");
+                        var conta3 = document.getElementById("conta3");
+                        var conta4 = document.getElementById("conta4");
+                        var conta5 = document.getElementById("conta5");
+                        var add2 = document.getElementById("add2");
+                        var add3 = document.getElementById("add3");
+                        var add4 = document.getElementById("add4");
+                        var add5 = document.getElementById("add5");
+                        var rem5 = document.getElementById("rem2");
+                        var rem5 = document.getElementById("rem3");
+                        var rem5 = document.getElementById("rem4");
+                        var rem5 = document.getElementById("rem5");
+
+                        btn.onclick = function Adicionar(){
+                            if(conta1.style.display === "none"){
+                                conta1.style.display = "flex";
+                                btn.value = "Remover Todas";
+                                btn.className = "btn btn-danger";
+                            }else{
+                                conta1.style.display = "none";
+                                conta2.style.display = "none";
+                                conta3.style.display = "none";
+                                conta4.style.display = "none";
+                                conta5.style.display = "none";
+                                btn.value = "Adicionar Outras Contas";
+                                btn.className = "btn btn-success";
+
+                            }
+
+                            add2.onclick = function add(){
+                                conta2.style.display = "flex";
+                            }
+                            add3.onclick = function add(){
+                                conta3.style.display = "flex";
+                            }
+                            add4.onclick = function add(){
+                                conta4.style.display = "flex";
+                            }
+                            add5.onclick = function add(){
+                                conta5.style.display = "flex";
+                            }
+
+                            rem1.onclick = function remore(){
+                                conta1.style.display = "none";
+                            }
+                            rem2.onclick = function remore(){
+                                conta2.style.display = "none";
+                            }
+                            rem3.onclick = function remore(){
+                                conta3.style.display = "none";
+                            }
+                            rem4.onclick = function remore(){
+                                conta4.style.display = "none";
+                            }
+                            rem5.onclick = function remore(){
+                                conta5.style.display = "none";
+                            }
+                            
+                        };
+
+                    </script>
 
                     <div class="col-11 py-2">
                     <div class="form-group">
@@ -141,6 +333,9 @@
                         
                     <button type="submit" class="my-4 btn btn-success btn-lg ">Cadastrar
                     </button>
+
+                    
+                    
                 </form>
             </div>
             <footer class="row text-center text-light bg my-2 py-4"><br><h6> LL Solar - Todos os Direitos Reservados - {% now "Y" %}</h6><br></footer>
