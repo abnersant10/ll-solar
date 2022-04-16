@@ -26,5 +26,4 @@ urlpatterns = [
     path('equipamentos', equipamentos,
          name='equipamentos'),
     path('logout', logout_view, name="logout"),
-
 ]
