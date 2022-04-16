@@ -20,7 +20,10 @@
         }
     </style>
     <script>
-        $(document).ready(function(){$(".dropdown").hover(function(){var dropdownMenu = $(this).children(".dropdown-menu");if(dropdownMenu.is(":visible")){dropdownMenu.parent().toggleClass("open");}});});
+        $(document).ready(function(){$(".dropdown").hover(function(){var dropdownMenu = $(this).children(".dropdown-menu");
+        if(dropdownMenu.is(":visible"))
+                {dropdownMenu.parent().toggleClass("open");}});});
+                
     </script>
 </head>
 <body>
@@ -134,8 +137,8 @@
 
                     <div class="col-11 py-2">
                     <div class="form-group">
-                        <label class="form-label text-white ">Enviar arquivo</label><br>
-                        <input type="file" class="form-control-file" >
+                        <label class="form-label text-white ">Enviar Anexos</label><br>
+                        <input type="file" multiple class="form-control-file" >
                     </div>
                 </div>
                     <button type="submit" class="my-4 btn btn-success btn-lg ">Cadastrar
