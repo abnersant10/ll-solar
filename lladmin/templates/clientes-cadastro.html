@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="col-11 col-sm-5 ">
                             <label class="form-label text-white ">* CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" required+ autofocus>
+                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" required autofocus>
                         </div>
                         <div class=" col-11 col-sm-6 ">
                             <label class="form-label text-white ">* Nome Completo</label>
@@ -165,13 +165,7 @@
 
                     <div class="col-11 py-2">
                     <div class="form-group">
-
-
-
-
-                        <label class="form-label text-white ">Enviar Anexos  </label><br>
-
-
+                        <label class="form-label text-white ">Enviar Anexos (Máx. 20) </label><br>
                         <div id="lines"></div>
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
@@ -185,11 +179,11 @@
     </div>
         <script type="text/javascript">
             var line = 1;
+            var n=1;
             function addInput(divName) {
             var newdiv = document.createElement('div');
-            
-            newdiv.innerHTML += '<label class="bg-light form-label"> <input class="form-control" type="file" id="anexo" name="anexos" id="text'+line +'_1 "> </label>';
-            document.getElementById(divName).appendChild(newdiv); line++;
+            newdiv.innerHTML += '<label class="bg-light form-label"> <input class="form-control" type="file" name="f'+n+'"></label>';
+            document.getElementById(divName).appendChild(newdiv); line++; n++;
             }
             addInput('lines');
         </script>

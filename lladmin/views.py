@@ -63,11 +63,12 @@ def clientes_cadastro(request):
                 messages.error(request, 'CPF ou CNPJ já está cadastrado!')
                 #save = False
             # salvar os anexos
-
             pasta = ('anexos/'+cpf_cnpj)
-            file = request.FILES.get('anexos')
-            fs = FileSystemStorage(location=pasta)
-            filename = fs.save(file.name, file)
+            for i in range(1, 21):
+                file = request.FILES.get('f'+str(i))
+                if file != None:
+                    fs = FileSystemStorage(location=pasta)
+                    fs.save(file.name, file)
 
             if save == True:
                 novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
