@@ -1,12 +1,15 @@
+from fileinput import filename
 from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import *
+from django.core.files.storage import FileSystemStorage
 # library aux
 from validate_docbr import CPF, CNPJ
 import re
 from lladmin.models import cliente, equipamento
+import os
 
 
 def home(request):
@@ -45,6 +48,7 @@ def clientes_cadastro(request):
         cidade = request.POST.get('cidade')
         estado = request.POST.get('estado')
         complemento = request.POST.get('complemento')
+
         _cpf = CPF()
         _cnpj = CNPJ()
         if _cpf.validate(cpf_cnpj) == True:
@@ -53,16 +57,23 @@ def clientes_cadastro(request):
         elif _cnpj.validate(cpf_cnpj) == True:
             save = True
             tipo_cliente = 'CNPJ'
-        elif len(cpf_cnpj) > 0:
-            messages.error(request, 'CPF ou CNPJ Inválido, tente novamente!')
 
-        if save == True:
-            novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
-                                   email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
-            novo_cliente.save()
-            messages.success(request, 'Cliente cadastrado com suceesso!')
-        if cpf_cnpj not in str(cliente.objects.values_list('cpf_cnpj')):
-            messages.error(request, 'CPF ou CNPJ já está cadastrado!')
+        if request.method == 'POST':
+            if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
+                messages.error(request, 'CPF ou CNPJ já está cadastrado!')
+                #save = False
+            # salvar os anexos
+
+            pasta = ('anexos/'+cpf_cnpj)
+            file = request.FILES.get('anexos')
+            fs = FileSystemStorage(location=pasta)
+            filename = fs.save(file.name, file)
+
+            if save == True:
+                novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
+                                       email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
+                novo_cliente.save()
+                messages.success(request, 'Cliente cadastrado com suceesso!')
 
         context = {
             'nome': nome,
