@@ -62,9 +62,9 @@ def clientes_cadastro(request):
         if request.method == 'POST':
             if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
                 messages.error(request, 'CPF ou CNPJ já está cadastrado!')
-                #save = False
+                save = False
             # salvar os anexos
-            pasta = ('anexos/'+cpf_cnpj)
+            pasta = ('media/'+cpf_cnpj)
             for i in range(1, 21):
                 file = request.FILES.get('f'+str(i))
                 if file != None:
@@ -109,12 +109,15 @@ def clientes_consulta(request):
                 consulta_cliente = clientes.filter(
                     nome_completo__contains=consulta_cliente)
                 consulta = True
+        _pessoas = dict((sorted(pessoas.items(), key=lambda item: item[1])))
+        _empresas = dict((sorted(empresas.items(), key=lambda item: item[1])))
+
         context = {
             'consulta_cliente': consulta_cliente,
             'nome': nome,
             'sobre_nome': sobre_nome,
-            'pessoas': pessoas,
-            'empresas': empresas,
+            'pessoas': _pessoas,
+            'empresas': _empresas,
             'tot_cpfs': tot_cpfs,
             'tot_cnpjs': tot_cnpjs,
             'consulta': consulta,
