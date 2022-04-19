@@ -95,10 +95,11 @@ def clientes_consulta(request):
         sobre_nome = request.user.last_name
         clientes = cliente.objects.values_list(
             'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', 'anexos', named=True)
+
         cpfs = clientes.filter(tipo_cliente='CPF').order_by('nome_completo')
         cnpjs = clientes.filter(tipo_cliente='CNPJ').order_by('nome_completo')
         tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
-
+        anexos = ''
         pessoas = {}
         empresas = {}
         for i in cpfs:
@@ -111,12 +112,12 @@ def clientes_consulta(request):
             consulta_cliente = request.POST.get('consulta_cliente')
             if len(consulta_cliente) > 0:
                 consulta_cliente = clientes.filter(
-                    nome_completo__contains=consulta_cliente)
-
+                    nome_completo=consulta_cliente)
+                anexos = str(consulta_cliente[0][12]).split()
+                print(anexos)
                 consulta = True
                 # encontra anexo relacionado ao cliente
 
-        print(consulta_cliente)
         context = {
             'consulta_cliente': consulta_cliente,
             'nome': nome,
@@ -126,6 +127,7 @@ def clientes_consulta(request):
             'tot_cpfs': tot_cpfs,
             'tot_cnpjs': tot_cnpjs,
             'consulta': consulta,
+            'anexos': anexos
 
         }
         return render(request, "clientes-consulta.html", context)

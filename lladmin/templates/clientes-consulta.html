@@ -161,17 +161,10 @@
                                 <p><strong>Endereço:</strong> <a href="https://www.google.com/maps/search/?api=1&query={{obj.endereco}}+{{obj.numero}}" target="_blank"> {{obj.endereco}}, {{obj.numero}}  - {{obj.bairro}}, {{obj.cidade}} - {{obj.estado}}, {{obj.cep}} </a> </p>
                                 <p><strong>Complemento:</strong> {{obj.complemento}} </p>
                                 <p><strong>Anexos:</strong> 
-
-                      
-                               {{obj.anexos }}
-                               {% for i in obj.anexos%}
-                                   
-                               {% if i == ' ' %}
-                                    
-                                    {% endif %}
-                               {% endfor %}
-
-                               
+                          
+                              {% for i in anexos %}
+                              <br><a target=_blank href="media/{{obj.cpf_cnpj}}/{{i}}">{{i}}</a>
+                              {% endfor %}
 
                                 </p>
                             
