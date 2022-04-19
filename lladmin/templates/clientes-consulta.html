@@ -158,7 +158,7 @@
                                 <p><strong>CPF/CNPJ:</strong> {{obj.cpf_cnpj}} </p>
                                 <p><strong>WhatsApp:</strong> <a href="https://api.WhatsApp.com/send?phone=55{{obj.whatsapp}}" target="_blank">  {{obj.whatsapp}} </a>   </p>
                                 <p><strong>E-mail:</strong> {{obj.email}}</strong> </p>
-                                <p><strong>Endereço:</strong> {{obj.endereco}}, {{obj.numero}}  - {{obj.bairro}}, {{obj.cidade}} - {{obj.estado}}, {{obj.cep}}  </p>
+                                <p><strong>Endereço:</strong> <a href="https://www.google.com/maps/search/?api=1&query={{obj.endereco}}+{{obj.numero}}" target="_blank"> {{obj.endereco}}, {{obj.numero}}  - {{obj.bairro}}, {{obj.cidade}} - {{obj.estado}}, {{obj.cep}} </a> </p>
                                 <p><strong>Complemento:</strong> {{obj.complemento}} </p>
                             
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
