@@ -42,6 +42,7 @@ def clientes_cadastro(request):
         zap = str(request.POST.get('zap'))
         zap = re.sub('[^0-9]', '', zap)
         email = request.POST.get('email')
+        cep = request.POST.get('cep')
         endereco = request.POST.get('endereco')
         num = request.POST.get('num')
         bairro = request.POST.get('bairro')
@@ -72,7 +73,7 @@ def clientes_cadastro(request):
 
             if save == True:
                 novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
-                                       email=email, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
+                                       email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
                 novo_cliente.save()
                 messages.success(request, 'Cliente cadastrado com suceesso!')
 
