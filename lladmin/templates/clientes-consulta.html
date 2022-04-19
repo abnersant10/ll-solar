@@ -160,8 +160,19 @@
                                 <p><strong>E-mail:</strong> {{obj.email}}</strong> </p>
                                 <p><strong>Endereço:</strong> <a href="https://www.google.com/maps/search/?api=1&query={{obj.endereco}}+{{obj.numero}}" target="_blank"> {{obj.endereco}}, {{obj.numero}}  - {{obj.bairro}}, {{obj.cidade}} - {{obj.estado}}, {{obj.cep}} </a> </p>
                                 <p><strong>Complemento:</strong> {{obj.complemento}} </p>
-                                <p><strong>Anexos:</strong> anexos
+                                <p><strong>Anexos:</strong> 
+
+                      
+                               {{obj.anexos }}
+                               {% for i in obj.anexos%}
+                                   
+                               {% if i == ' ' %}
                                     
+                                    {% endif %}
+                               {% endfor %}
+
+                               
+
                                 </p>
                             
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

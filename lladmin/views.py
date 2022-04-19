@@ -49,7 +49,7 @@ def clientes_cadastro(request):
         cidade = request.POST.get('cidade')
         estado = request.POST.get('estado')
         complemento = request.POST.get('complemento')
-
+        anexos = ''
         _cpf = CPF()
         _cnpj = CNPJ()
         if _cpf.validate(cpf_cnpj) == True:
@@ -62,7 +62,7 @@ def clientes_cadastro(request):
         if request.method == 'POST':
             if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
                 messages.error(request, 'CPF ou CNPJ já está cadastrado!')
-                save = False
+                #save = False
             # salvar os anexos
             pasta = ('media/'+cpf_cnpj)
             for i in range(1, 21):
@@ -70,16 +70,19 @@ def clientes_cadastro(request):
                 if file != None:
                     fs = FileSystemStorage(location=pasta)
                     fs.save(file.name, file)
-
+                    anexos = anexos+str((file.name))+' '
+            print(anexos)
             if save == True:
                 novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
-                                       email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento)
+                                       email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos)
                 novo_cliente.save()
                 messages.success(request, 'Cliente cadastrado com suceesso!')
 
         context = {
             'nome': nome,
-            'sobre_nome': sobre_nome
+            'sobre_nome': sobre_nome,
+            'anexos': anexos
+
         }
         return render(request, "clientes-cadastro.html", context)
     else:
@@ -91,10 +94,11 @@ def clientes_consulta(request):
         nome = request.user.first_name
         sobre_nome = request.user.last_name
         clientes = cliente.objects.values_list(
-            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', named=True)
-        cpfs = clientes.filter(tipo_cliente='CPF')
-        cnpjs = clientes.filter(tipo_cliente='CNPJ')
+            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', 'anexos', named=True)
+        cpfs = clientes.filter(tipo_cliente='CPF').order_by('nome_completo')
+        cnpjs = clientes.filter(tipo_cliente='CNPJ').order_by('nome_completo')
         tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
+
         pessoas = {}
         empresas = {}
         for i in cpfs:
@@ -108,19 +112,21 @@ def clientes_consulta(request):
             if len(consulta_cliente) > 0:
                 consulta_cliente = clientes.filter(
                     nome_completo__contains=consulta_cliente)
-                consulta = True
-        _pessoas = dict((sorted(pessoas.items(), key=lambda item: item[1])))
-        _empresas = dict((sorted(empresas.items(), key=lambda item: item[1])))
 
+                consulta = True
+                # encontra anexo relacionado ao cliente
+
+        print(consulta_cliente)
         context = {
             'consulta_cliente': consulta_cliente,
             'nome': nome,
             'sobre_nome': sobre_nome,
-            'pessoas': _pessoas,
-            'empresas': _empresas,
+            'pessoas': pessoas,
+            'empresas': empresas,
             'tot_cpfs': tot_cpfs,
             'tot_cnpjs': tot_cnpjs,
             'consulta': consulta,
+
         }
         return render(request, "clientes-consulta.html", context)
     else:
