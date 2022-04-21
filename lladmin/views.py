@@ -31,6 +31,10 @@ def logout_view(request):
     return redirect('/')
 
 
+def delete_view(request):
+    return HttpResponse("Aeeer")
+
+
 def clientes_cadastro(request):
     if request.user.is_authenticated == True:
         nome = request.user.first_name
@@ -110,11 +114,13 @@ def clientes_consulta(request):
         consulta_cliente = ''
         if request.method == 'POST':
             consulta_cliente = request.POST.get('consulta_cliente')
-            if len(consulta_cliente) > 0:
+            if consulta_cliente != None:
                 consulta_cliente = clientes.filter(
                     nome_completo=consulta_cliente)
-                anexos = str(consulta_cliente[0][12]).split()
-                print(anexos)
+                try:
+                    anexos = str(consulta_cliente[0][12]).split()
+                except:
+                    pass
                 consulta = True
                 # encontra anexo relacionado ao cliente
 
@@ -128,8 +134,13 @@ def clientes_consulta(request):
             'tot_cnpjs': tot_cnpjs,
             'consulta': consulta,
             'anexos': anexos
-
         }
+
+        delete = request.POST.get('delete')
+        if str(delete) == 'sim':
+            cliente.objects.filter(cpf_cnpj='03211721401').delete()
+            print("deletado com sucesso: ", delete)
+
         return render(request, "clientes-consulta.html", context)
     else:
         return redirect('home')

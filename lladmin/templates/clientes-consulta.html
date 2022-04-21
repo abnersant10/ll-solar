@@ -42,6 +42,8 @@
         });     
         </script>
 
+     
+
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -165,11 +167,21 @@
                               {% for i in anexos %}
                               <br><a target=_blank href="media/{{obj.cpf_cnpj}}/{{i}}">{{i}}</a>
                               {% endfor %}
-
-                                </p>
+                            </p>
                             
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <button type="button" class="my-2 btn btn-outline-danger btn-sm">Excluir</button>
+                            
+                            <form method="post">
+                                {% csrf_token %} 
+                                <input type="hidden"  name="delete" value="sim" 
+                                 readonly/>
+                                <button type="submit" class="my-2 btn btn-outline-danger btn-sm" > Excluir </button>
+
+                            </form>
+
+
+                            
+                            
                           </div>
                           {% endfor %}
                 {% endif %}
