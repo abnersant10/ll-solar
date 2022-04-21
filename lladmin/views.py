@@ -137,9 +137,11 @@ def clientes_consulta(request):
         }
 
         delete = request.POST.get('delete')
-        if str(delete) == 'sim':
-            cliente.objects.filter(cpf_cnpj='03211721401').delete()
-            print("deletado com sucesso: ", delete)
+        cli_del = request.POST.get('cliente')
+        if delete == 'sim':
+            cliente.objects.filter(cpf_cnpj=cli_del).delete()
+            messages.success(request, 'Cliente excluido!')
+            return redirect('clientes-consulta')
 
         return render(request, "clientes-consulta.html", context)
     else:

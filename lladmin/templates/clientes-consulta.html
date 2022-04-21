@@ -175,7 +175,12 @@
                                 {% csrf_token %} 
                                 <input type="hidden"  name="delete" value="sim" 
                                  readonly/>
+                                 <input type="hidden"  name="cliente" value="{{obj.cpf_cnpj}}" 
+                                 readonly/>
                                 <button type="submit" class="my-2 btn btn-outline-danger btn-sm" > Excluir </button>
+
+
+                                
 
                             </form>
 
@@ -187,6 +192,10 @@
                 {% endif %}
 
             
+
+                {% if messages %}{% for message in messages %}{%if message.tags == 'success' %}<div class="col-md-7 my-4 alert alert-danger alert-dismissible fade show " role="alert"><strong>Atenção!</strong> {{message}}<button type="button" class="btn-close"data-bs-dismiss="alert" aria-label="Close"></button></div>{% endif %}{% endfor %}{% endif %}
+
+
                 <div class="row px-2">
                     <p class="text-warning h6 py-2 ">  Clientes Cadastrados </p>
                     <hr class="text-light">
