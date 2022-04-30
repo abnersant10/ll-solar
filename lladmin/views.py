@@ -61,9 +61,7 @@ def clientes_cadastro(request):
             tipo_cliente = 'CNPJ'
 
         if request.method == 'POST':
-            if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
-                messages.error(request, 'CPF ou CNPJ já está cadastrado!')
-                #save = False
+
             # salvar os anexos
             pasta = ('media/'+cpf_cnpj)
 
@@ -75,11 +73,23 @@ def clientes_cadastro(request):
                     fs.save(file.name, file)
                     anexos = anexos+str((file.name))+' '
 
-            if save == True:
-                novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
-                                       email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos)
-                novo_cliente.save()
-                messages.success(request, 'Cliente cadastrado com suceesso!')
+                # save = False
+            if save == False:
+                messages.error(
+                    request, 'CPF Inválido, Tente novamente!')
+        if save == True:
+            anexo_ant = ''
+            cli = cliente.objects.values_list(
+                'cpf_cnpj', 'anexos', named=True)
+            for lista_cli in cli:
+                if lista_cli[0] == cpf_cnpj:
+                    anexo_ant = lista_cli[1]
+
+            novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
+                                   email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos+anexo_ant)
+            novo_cliente.save()
+            messages.success(
+                request, 'Cliente cadastrado/atualizado com suceesso!')
 
         context = {
             'nome': nome,
