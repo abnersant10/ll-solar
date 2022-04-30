@@ -10,6 +10,7 @@ from validate_docbr import CPF, CNPJ
 import re
 from lladmin.models import cliente, equipamento
 import os
+import shutil
 
 
 def home(request):
@@ -29,10 +30,6 @@ def home(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
-
-
-def delete_view(request):
-    return HttpResponse("Aeeer")
 
 
 def clientes_cadastro(request):
@@ -69,13 +66,15 @@ def clientes_cadastro(request):
                 #save = False
             # salvar os anexos
             pasta = ('media/'+cpf_cnpj)
+
             for i in range(1, 21):
                 file = request.FILES.get('f'+str(i))
                 if file != None:
                     fs = FileSystemStorage(location=pasta)
+                    file.name = str(file.name).replace(' ', '-')
                     fs.save(file.name, file)
                     anexos = anexos+str((file.name))+' '
-            print(anexos)
+
             if save == True:
                 novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
                                        email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos)
@@ -140,6 +139,9 @@ def clientes_consulta(request):
         cli_del = request.POST.get('cliente')
         if delete == 'sim':
             cliente.objects.filter(cpf_cnpj=cli_del).delete()
+            folder = str(
+                'media/'+str(cli_del))
+            shutil.rmtree(folder)
             messages.success(request, 'Cliente excluido!')
             return redirect('clientes-consulta')
 
