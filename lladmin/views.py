@@ -96,7 +96,6 @@ def clientes_cadastro(request):
             'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', 'anexos', named=True)
         cpfs = clientes.filter(tipo_cliente='CPF').order_by('nome_completo')
         cnpjs = clientes.filter(tipo_cliente='CNPJ').order_by('nome_completo')
-
         pessoas = {}
         empresas = {}
         for i in cpfs:
@@ -104,7 +103,6 @@ def clientes_cadastro(request):
         for i in cnpjs:
             empresas[i[2]] = i[3]
 
-        print(pessoas)
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome,
@@ -112,6 +110,8 @@ def clientes_cadastro(request):
             'pessoas': pessoas,
             'empresas': empresas,
         }
+        if request.method == 'POST':
+            HttpResponse("oiinn")
         return render(request, "clientes-cadastro.html", context)
     else:
         return redirect('home')
