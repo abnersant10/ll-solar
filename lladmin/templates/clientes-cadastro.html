@@ -23,6 +23,7 @@
         }
         
     </style>
+    
     <script>
         $(document).ready(function () {
             $(".dropdown").hover(function () {
@@ -33,6 +34,13 @@
             });
         });      
     </script>
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
+
+        
 </head>
 <body>
     <div class="container ">
@@ -112,14 +120,21 @@
                         <p class="text-warning h6 py-2 ">  Cadastrar Cliente </p>
                         <hr class=" text-light "></div>
                     <div class="row">
-                        <div class="col-11 col-sm-5 ">
-                            <label class="form-label text-white ">* CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" required autofocus>
-                        </div>
-                        <div class=" col-11 col-sm-6 ">
+                        <div class=" col-11 col-sm-5 ">
                             <label class="form-label text-white ">* Nome Completo</label>
-                            <input type="text" class="form-control" placeholder="Nome / Nome Fantasia" name="nome" required>
+
+
+                            
+
+
+                            <input type="text" name="nome" class="form-control" placeholder="Nome / Nome Fantasia" id="tags"  required autofocus  >
                         </div>
+
+                        <div class="col-11 col-sm-6 ">
+                            <label class="form-label text-white ">* CPF ou CNPJ</label>
+                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" required >
+                        </div>
+                        
                         <div class=" col-5 col-sm-5 py-2">
                             <label class="form-label text-white ">* WhatsApp</label>
                             <input type="tel" class="form-control" placeholder="84 9 9999-9999" name="zap" required>
@@ -174,10 +189,17 @@
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
                 </div>
-                    <button type="submit" class="my-4 btn btn-success btn-lg ">Cadastrar
+                
+                    <button type="submit" class="my-4 btn btn-success btn-lg" data-toggle="tooltip" data-placement="left" title="Cadastra/Atualiza dados do cliente">Enviar
                     </button>
+
+                    <a class="btn btn-outline-warning btn-lg" href="#" data-toggle="tooltip" data-placement="left" title="Nome preenchido retorna os dados do cliente">Editar</a>
+
                 </form>
+           
+                
             </div>
+        
             <footer class="row text-center text-light bg my-2 py-4"><br><h6> LL Solar - Todos os Direitos Reservados - {% now "Y" %}</h6><br></footer>
         </div>
     </div>
@@ -206,5 +228,7 @@
                 });
             });
         </script>
+
+       
 </body>
 </html>

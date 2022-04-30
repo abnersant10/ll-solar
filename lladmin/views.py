@@ -91,11 +91,26 @@ def clientes_cadastro(request):
             messages.success(
                 request, 'Cliente cadastrado/atualizado com suceesso!')
 
+        # contexto pra encontrar nome do cliente
+        clientes = cliente.objects.values_list(
+            'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', 'anexos', named=True)
+        cpfs = clientes.filter(tipo_cliente='CPF').order_by('nome_completo')
+        cnpjs = clientes.filter(tipo_cliente='CNPJ').order_by('nome_completo')
+
+        pessoas = {}
+        empresas = {}
+        for i in cpfs:
+            pessoas[i[2]] = i[3]
+        for i in cnpjs:
+            empresas[i[2]] = i[3]
+
+        print(pessoas)
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome,
-            'anexos': anexos
-
+            'anexos': anexos,
+            'pessoas': pessoas,
+            'empresas': empresas,
         }
         return render(request, "clientes-cadastro.html", context)
     else:
