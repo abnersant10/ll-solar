@@ -16,7 +16,7 @@ Including another URLconf
 from xml.dom.minidom import Document
 from django.contrib import admin
 from django.urls import path
-from lladmin.views import home, clientes_cadastro, clientes_consulta, equipamentos, logout_view
+from lladmin.views import home, clientes_cadastro, clientes_consulta, clientes_editar, equipamentos, logout_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,6 +26,7 @@ urlpatterns = [
     # aqui seria a página inicial
     path('clientes-cadastro', clientes_cadastro, name='clientes-cadastro'),
     path('clientes-consulta', clientes_consulta, name='clientes-consulta'),
+    path('clientes-editar', clientes_editar, name='clientes-editar'),
     path('equipamentos', equipamentos,
          name='equipamentos'),
     path('logout', logout_view, name="logout"),

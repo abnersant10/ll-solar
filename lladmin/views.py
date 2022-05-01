@@ -73,10 +73,9 @@ def clientes_cadastro(request):
                     fs.save(file.name, file)
                     anexos = anexos+str((file.name))+' '
 
-                # save = False
-            if save == False:
-                messages.error(
-                    request, 'CPF Inválido, Tente novamente!')
+            if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
+                messages.error(request, 'CPF ou CNPJ já está cadastrado!')
+                save = False
         if save == True:
             anexo_ant = ''
             cli = cliente.objects.values_list(
@@ -173,6 +172,10 @@ def clientes_consulta(request):
         return render(request, "clientes-consulta.html", context)
     else:
         return redirect('home')
+
+
+def clientes_editar(request):
+    pass
 
 
 def equipamentos(request):
