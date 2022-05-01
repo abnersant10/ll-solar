@@ -74,7 +74,8 @@ def clientes_cadastro(request):
                     anexos = anexos+str((file.name))+' '
 
             if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
-                messages.error(request, 'CPF ou CNPJ já está cadastrado!')
+                messages.error(
+                    request, 'CPF | CNPJ inválido ou já está cadastrado!')
                 save = False
         if save == True:
             anexo_ant = ''
@@ -174,8 +175,15 @@ def clientes_consulta(request):
         return redirect('home')
 
 
-def clientes_editar(request):
-    pass
+def clientes_alterar(request):
+    if request.user.is_authenticated == True:
+        nome = request.user.first_name
+        sobre_nome = request.user.last_name
+        context = {
+            'nome': nome,
+            'sobre_nome': sobre_nome,
+        }
+        return render(request, "clientes-alterar.html", context)
 
 
 def equipamentos(request):
