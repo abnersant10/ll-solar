@@ -184,6 +184,7 @@ def clientes_alterar(request):
         cnpjs = clientes.filter(tipo_cliente='CNPJ').order_by('nome_completo')
 
         anexos = ''
+
         pessoas = {}
         empresas = {}
         for i in cpfs:
@@ -192,15 +193,34 @@ def clientes_alterar(request):
             empresas[i[2]] = i[3]
 
         if request.method == 'POST':
-            cli = request.POST.get('cliente')
-            print(cli)
-            return HttpResponse("Aeeer")
+            consulta_cliente = request.POST.get('cliente')
+            if consulta_cliente != None:
+                consulta_cliente = clientes.filter(
+                    nome_completo=consulta_cliente)
+                print(consulta_cliente)
+            if consulta_cliente != None:
+                try:
+                    anexos = str(consulta_cliente[0][12]).split()
+                except:
+                    pass
+                context = {
+                    'nome': nome,
+                    'sobre_nome': sobre_nome,
+                    'pessoas': pessoas,
+                    'empresas': empresas,
+                    'consulta_cliente': consulta_cliente,
+                    'anexos': anexos,
 
+                }
+                return render(request, "clientes-alterar.html", context)
+
+        consulta_cliente = ''
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome,
             'pessoas': pessoas,
             'empresas': empresas,
+
         }
 
         return render(request, "clientes-alterar.html", context)
