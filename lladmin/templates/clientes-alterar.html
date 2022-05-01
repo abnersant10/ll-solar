@@ -35,11 +35,27 @@
             });
         });      
     </script>
-    <script>
-        $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();
-        });
-        </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $( function() {
+    var availableTags = [
+    {% for nome  in pessoas %}
+    "{{ nome }}",  
+    {% endfor %}
+    {% for nome  in empresas %}
+    "{{ nome }}",  
+    {% endfor %}
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags,
+      minLength: 2
+    });
+  } );
+  </script>
+
 
         
 </head>
@@ -123,15 +139,20 @@
                     <div class="row">
                         <p class="text-warning h6 py-2 ">  Alterar Cliente </p>
                         <hr class=" text-light "></div>
+
+                        
                     <div class="row">
+                        <div class=" col-11 col-sm-6 ">
+                            <label class="form-label text-white ">* Pesquisar Cliente </label>
+                            <input id="tags" type="text" name="nome" class="form-control" placeholder="Nome / Nome Fantasia"   required autofocus  >
+
+                            <button type="submit" class="my-4 btn btn-outline-warning " >Buscar </button>
+
+                        </div>
+                        <hr class=" my-2 text-light ">
                         <div class=" col-11 col-sm-5 ">
                             <label class="form-label text-white ">* Nome Completo</label>
-
-
-                            
-
-
-                            <input type="text" name="nome" class="form-control" placeholder="Nome / Nome Fantasia"   required autofocus  >
+                            <input type="text" name="nome" class="form-control" placeholder="Nome / Nome Fantasia"   required   >
                         </div>
 
                         <div class="col-11 col-sm-6 ">
@@ -188,13 +209,13 @@
 
                     <div class="col-11 py-2">
                     <div class="form-group">
-                        <label class="form-label text-white ">Enviar Anexos (Máx. 20) </label><br>
+                        <label class="form-label text-white ">Adicionar anexos extras (Máx. 20) </label><br>
                         <div id="lines"></div>
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
                 </div>
                 
-                    <button type="submit" class="my-4 btn btn-success btn-lg" data-toggle="tooltip" data-placement="left" title="Cadastra/Atualiza dados do cliente">Cadastrar
+                    <button type="submit" class="my-4 btn btn-success btn-lg" data-toggle="tooltip" data-placement="left" title="Atualiza dados do cliente">Atualizar
                     </button>
 
                     
