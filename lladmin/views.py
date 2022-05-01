@@ -89,7 +89,7 @@ def clientes_cadastro(request):
                                    email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos+anexo_ant)
             novo_cliente.save()
             messages.success(
-                request, 'Cliente cadastrado/atualizado com suceesso!')
+                request, 'Cliente cadastrado com suceesso!')
 
         # contexto pra encontrar nome do cliente
         clientes = cliente.objects.values_list(
@@ -110,8 +110,7 @@ def clientes_cadastro(request):
             'pessoas': pessoas,
             'empresas': empresas,
         }
-        if request.method == 'POST':
-            HttpResponse("oiinn")
+
         return render(request, "clientes-cadastro.html", context)
     else:
         return redirect('home')
@@ -183,7 +182,7 @@ def clientes_alterar(request):
             'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', 'anexos', named=True)
         cpfs = clientes.filter(tipo_cliente='CPF').order_by('nome_completo')
         cnpjs = clientes.filter(tipo_cliente='CNPJ').order_by('nome_completo')
-        tot_cpfs, tot_cnpjs = len(cpfs), len(cnpjs)
+
         anexos = ''
         pessoas = {}
         empresas = {}
@@ -192,12 +191,18 @@ def clientes_alterar(request):
         for i in cnpjs:
             empresas[i[2]] = i[3]
 
+        if request.method == 'POST':
+            cli = request.POST.get('cliente')
+            print(cli)
+            return HttpResponse("Aeeer")
+
         context = {
             'nome': nome,
             'sobre_nome': sobre_nome,
             'pessoas': pessoas,
             'empresas': empresas,
         }
+
         return render(request, "clientes-alterar.html", context)
 
 
