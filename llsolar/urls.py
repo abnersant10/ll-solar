@@ -20,6 +20,7 @@ from lladmin.views import home, clientes_cadastro, clientes_consulta, clientes_a
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
@@ -30,6 +31,8 @@ urlpatterns = [
     path('equipamentos', equipamentos,
          name='equipamentos'),
     path('logout', logout_view, name="logout"),
+
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
