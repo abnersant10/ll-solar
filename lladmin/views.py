@@ -238,7 +238,7 @@ def clientes_alterar(request):
                 novo_cliente.save()
 
                 messages.success(
-                    request, 'Cliente ATUALIZADO com suceesso!')
+                    request, 'Cliente ATUALIZADO com sucesso!')
 
         nome = request.user.first_name
         sobre_nome = request.user.last_name
