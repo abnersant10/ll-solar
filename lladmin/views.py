@@ -180,6 +180,58 @@ def clientes_consulta(request):
 
 def clientes_alterar(request):
     if request.user.is_authenticated == True:
+        save = False
+        cpf_cnpj = str(request.POST.get('cpf_cnpj'))
+        cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
+        nome_cli = request.POST.get('nome')
+        zap = str(request.POST.get('zap'))
+        zap = re.sub('[^0-9]', '', zap)
+        email = request.POST.get('email')
+        cep = request.POST.get('cep')
+        endereco = request.POST.get('endereco')
+        num = request.POST.get('num')
+        bairro = request.POST.get('bairro')
+        cidade = request.POST.get('cidade')
+        estado = request.POST.get('estado')
+        complemento = request.POST.get('complemento')
+        anexos = ''
+        _cpf = CPF()
+        _cnpj = CNPJ()
+        if _cpf.validate(cpf_cnpj) == True:
+            save = True
+            tipo_cliente = 'CPF'
+        elif _cnpj.validate(cpf_cnpj) == True:
+            save = True
+            tipo_cliente = 'CNPJ'
+
+        if request.method == 'POST':
+
+            # salvar os anexos
+            pasta = ('media/'+cpf_cnpj)
+
+            for i in range(1, 21):
+                file = request.FILES.get('f'+str(i))
+                if file != None:
+                    fs = FileSystemStorage(location=pasta)
+                    file.name = str(file.name).replace(' ', '-')
+                    fs.save(file.name, file)
+                    anexos = anexos+str((file.name))+' '
+
+            if save == True:
+                anexo_ant = ''
+                cli = cliente.objects.values_list(
+                    'cpf_cnpj', 'anexos', named=True)
+                for lista_cli in cli:
+                    if lista_cli[0] == cpf_cnpj:
+                        anexo_ant = lista_cli[1]
+
+                novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
+                                       email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos+anexo_ant)
+                novo_cliente.save()
+
+                messages.success(
+                    request, 'Cliente ATUALIZADO com suceesso!')
+
         nome = request.user.first_name
         sobre_nome = request.user.last_name
         clientes = cliente.objects.values_list(
@@ -214,6 +266,7 @@ def clientes_alterar(request):
                     'empresas': empresas,
                     'consulta_cliente': consulta_cliente,
                     'anexos': anexos,
+                    'cpf_cnpj': cpf_cnpj,
 
                 }
                 return render(request, "clientes-alterar.html", context)
