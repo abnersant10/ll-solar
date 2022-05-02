@@ -1,3 +1,4 @@
+from ctypes import cast
 from fileinput import filename
 from urllib import request
 from django.http import HttpResponse
@@ -37,6 +38,7 @@ def clientes_cadastro(request):
         nome = request.user.first_name
         sobre_nome = request.user.last_name
         save = False
+        save = str(request.POST.get('save'))
         cpf_cnpj = str(request.POST.get('cpf_cnpj'))
         cpf_cnpj = re.sub('[^0-9]', '', cpf_cnpj)
         nome_cli = request.POST.get('nome')
@@ -51,17 +53,20 @@ def clientes_cadastro(request):
         estado = request.POST.get('estado')
         complemento = request.POST.get('complemento')
         anexos = ''
-        _cpf = CPF()
-        _cnpj = CNPJ()
-        if _cpf.validate(cpf_cnpj) == True:
-            save = True
-            tipo_cliente = 'CPF'
-        elif _cnpj.validate(cpf_cnpj) == True:
-            save = True
-            tipo_cliente = 'CNPJ'
 
         if request.method == 'POST':
-
+            _cpf = CPF()
+            _cnpj = CNPJ()
+            if _cpf.validate(cpf_cnpj) == True:
+                save = True
+                tipo_cliente = 'CPF'
+            elif _cnpj.validate(cpf_cnpj) == True:
+                save = True
+                tipo_cliente = 'CNPJ'
+            else:
+                messages.error(
+                    request, 'CPF ou CNPJ Inválido!')
+                save = False
             # salvar os anexos
             pasta = ('media/'+cpf_cnpj)
 
@@ -77,10 +82,7 @@ def clientes_cadastro(request):
                 messages.error(
                     request, 'CPF ou CNPJ já está cadastrado!')
                 save = False
-            elif (_cnpj.validate(cpf_cnpj) == False) or (_cpf.validate(cpf_cnpj) == False):
-                messages.error(
-                    request, 'CPF ou CNPJ inválido, tente novamente!')
-                save = False
+
         if save == True:
             anexo_ant = ''
             cli = cliente.objects.values_list(
@@ -165,11 +167,17 @@ def clientes_consulta(request):
 
         delete = request.POST.get('delete')
         cli_del = request.POST.get('cliente')
+        print(cli_del)
+        print(delete)
         if delete == 'sim':
             cliente.objects.filter(cpf_cnpj=cli_del).delete()
             folder = str(
                 'media/'+str(cli_del))
-            shutil.rmtree(folder)
+            try:
+                shutil.rmtree(folder)
+            except:
+                pass
+
             messages.success(request, 'Cliente excluido!')
             return redirect('clientes-consulta')
 
