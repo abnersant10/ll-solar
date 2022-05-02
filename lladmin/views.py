@@ -75,7 +75,11 @@ def clientes_cadastro(request):
 
             if cpf_cnpj in str(cliente.objects.values_list('cpf_cnpj')):
                 messages.error(
-                    request, 'CPF | CNPJ inválido ou já está cadastrado!')
+                    request, 'CPF ou CNPJ já está cadastrado!')
+                save = False
+            elif (_cnpj.validate(cpf_cnpj) == False) or (_cpf.validate(cpf_cnpj) == False):
+                messages.error(
+                    request, 'CPF ou CNPJ inválido, tente novamente!')
                 save = False
         if save == True:
             anexo_ant = ''
