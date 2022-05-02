@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$cl+1k(1+l+a*eed#p&m$_11e6c5u-sn&lcbu*t-2kusd%ordf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['ll-solar.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ll-solar.herokuapp.com']
 
 
 # Application definition
@@ -118,11 +118,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# save statics files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# HEROKU
-
-
-# HEROKU
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -14,7 +14,7 @@ class cliente(models.Model):
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=2)
     complemento = models.CharField(max_length=500)
-    anexos = models.CharField(max_length=950, default=None)
+    anexos = models.CharField(max_length=950)
 
     def __str__(self):
         return self.cpf_cnpj
