@@ -20,6 +20,15 @@ class cliente(models.Model):
         return self.cpf_cnpj
 
 
+class conta_contrato(models.Model):
+    cpf_cnpj_contrato = models.CharField(
+        max_length=14)  # chave estrangeira de cliente
+
+    conta_contrato = models.CharField(max_length=14)
+    data_ref = models.DateField()
+    consumo = models.IntegerField()
+
+
 class equipamento(models.Model):
     tipo = models.CharField(max_length=20)
     descricao = models.CharField(max_length=150)

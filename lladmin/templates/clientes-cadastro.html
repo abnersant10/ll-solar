@@ -67,9 +67,7 @@
                               <li><a class="dropdown-item" href="{% url 'clientes-consulta' %}">Consultar</a></li>
                               </li>
                               <li><a class="dropdown-item" href="{% url 'clientes-alterar' %}">Alterar</a></li>
-                              </li>
-                              
-                              
+                              </li> 
                             </ul>
                           </li>
     
@@ -189,15 +187,55 @@
                         <div id="lines"></div>
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
+                    <hr class=" text-light ">
+                    <label class="form-label text-white">Contas de energia (Máx. 12) </label>
+                <div class="row">
+                    <div class="col-3">
+                        <input  type="text" class="form-control" placeholder="Digite a conta contrato" name="contrato">  
+                    </div>
+                    <div class="col-4">
+                        <input  type="text" class="form-control" placeholder="CPF ou CNPJ associada ao contrato" name="contrato">  
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2 py-2">
+                        <label class="form-label text-white">Ano referência </label>
+                        <input  type="text" class="form-control" placeholder="Ex: 2020" name="ano_ref">  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label class="form-label text-white"> Mês Referência </label>
+                    </div>
+                    <div class="col-3"> 
+                        <label class="form-label text-white">Consumo (KWh)  </label>
+                    </div>
+                </div>
+                <!--base mês ref e ano ref 
+                <div class="row">
+                    <div class="col-2">
+                        <label class="form-label text-white"> Mês Referência </label>
+                        <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"> 
+                    </div>
+                    <div class="col-3"> 
+                        <label class="form-label text-white">Consumo (KWh)  </label>
+                        <input  type="text" class="form-control" placeholder="Apenas Números" name="mes_ref">
+                    </div>
+                </div>
+                -->
+
+                <div class="row">
+                    <div class="form-group">
+                        <div id="lines2"></div>
+                        <button type="button" class="btn btn-light " onclick="addInput2('lines2')">+</button>
+                    </div>
+                </div>
                     <input type="hidden"  name="salvar" value="True" 
                                  readonly/>
                 </div>
-                
                     <button type="submit" class="my-4 btn btn-success ">Cadastrar
                     </button>
-
-                    
-
                 </form>
            
                 
@@ -206,17 +244,29 @@
             <footer class="row text-center text-light bg my-2 py-4"><br><h6> LL Solar - Todos os Direitos Reservados - {% now "Y" %}</h6><br></footer>
         </div>
     </div>
+    <!-- Enviar anexos -->
         <script type="text/javascript">
             var line = 1;
             var n=1;
-            function addInput(divName) {
+            function addInput2(divName) {
             var newdiv = document.createElement('div');
-            newdiv.innerHTML += '<label class="bg-light form-label"> <input class="form-control" type="file" name="f'+n+'"></label>';
+            newdiv.innerHTML += '<div class="row"><div class="col-2 py-2">             <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"></div><div class="col-3 py-2"><input  type="text" class="form-control" placeholder="Apenas Números" name="mes_ref"></div></div>';
             document.getElementById(divName).appendChild(newdiv); line++; n++;
             }
-            addInput('lines');
+            addInput2('lines2');
         </script>
-        <script type="text/javascript">
+    <!-- Adicionar contas extras -->
+    <script type="text/javascript">
+        var line = 1;
+        var n=1;
+        function addInput(divName) {
+        var newdiv = document.createElement('div');
+        newdiv.innerHTML += '<label class="bg-light form-label"> <input class="form-control" type="file" name="f'+n+'"></label>';
+        document.getElementById(divName).appendChild(newdiv); line++; n++;
+        }
+        addInput('lines');
+    </script>
+    <script type="text/javascript">
             jQuery("#cep").focusout(function(){
                 jQuery.ajax({
                     url: 'https://viacep.com.br/ws/'+jQuery(this).val()+'/json/',

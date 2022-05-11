@@ -15,17 +15,20 @@ import shutil
 
 
 def home(request):
-    if request.method == 'POST':
-        cpf = str(request.POST.get('cpf'))
-        cpf = re.sub('[^0-9]', '', cpf)
-        senha = request.POST.get('senha')
-        user = authenticate(request, username=cpf, password=senha)
-        if user is not None:
-            login(request, user)
-            return redirect('clientes-cadastro')
-        else:
-            messages.error(request, 'CPF ou Senha Incorreta!')
-    return render(request, "home.html")
+    if request.user.is_authenticated == False:
+        if request.method == 'POST':
+            cpf = str(request.POST.get('cpf'))
+            cpf = re.sub('[^0-9]', '', cpf)
+            senha = request.POST.get('senha')
+            user = authenticate(request, username=cpf, password=senha)
+            if user is not None:
+                login(request, user)
+                return redirect('clientes-cadastro')
+            else:
+                messages.error(request, 'CPF ou Senha Incorreta!')
+        return render(request, "home.html")
+    else:
+        return render(request, "clientes-cadastro.html")
 
 
 def logout_view(request):
