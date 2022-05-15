@@ -57,6 +57,9 @@ def clientes_cadastro(request):
         complemento = request.POST.get('complemento')
         anexos = ''
 
+        # contas
+        contrato = request.POST.get('contrato')
+        cpf_cnpj_contrato = request.POST.get('cpf_cnpj_contrato')
         if request.method == 'POST':
             _cpf = CPF()
             _cnpj = CNPJ()
