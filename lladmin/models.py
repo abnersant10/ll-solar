@@ -17,16 +17,28 @@ class cliente(models.Model):
     anexos = models.CharField(max_length=950)
 
     def __str__(self):
-        return self.cpf_cnpj
+        return self.cpf_cnpj + " - " + self.nome_completo
 
 
-class conta_contrato(models.Model):
+class contrato(models.Model):
+    # chave estrangeira do cnpj_cpf_cliente
+    cpf_cnpj_cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
     cpf_cnpj_contrato = models.CharField(
-        max_length=14)  # chave estrangeira de cliente
+        max_length=14)
+    conta_contrato = models.CharField(primary_key=True, max_length=20)
 
-    conta_contrato = models.CharField(max_length=14)
-    data_ref = models.DateField()
-    consumo = models.IntegerField()
+    def __str__(self):
+        return self.conta_contrato
+
+
+class conta(models.Model):
+    # chave estrangeira contra_contrato
+    conta = models.ForeignKey(contrato, on_delete=models.CASCADE)
+    data_ref = models.DateField(default=None)
+    consumo = models.IntegerField(default=None)
+
+    def __str__(self):
+        return str(self.conta)
 
 
 class equipamento(models.Model):

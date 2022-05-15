@@ -188,27 +188,27 @@
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
                     <hr class=" text-light ">
-                    <label class="form-label text-white">Contas de energia (Máx. 12) </label>
+                    <label class="form-label text-white">Contas de energia (Máx. 12 contas) </label>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-9 col-md-4 py-2">
                         <input  type="text" class="form-control" placeholder="Digite a conta contrato" name="contrato">  
                     </div>
-                    <div class="col-4">
+                    <div class="col-9 col-md-4 py-2">
                         <input  type="text" class="form-control" placeholder="CPF ou CNPJ associada ao contrato" name="contrato">  
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-2 py-2">
+                    <div class="col-4 col-md-2 py-2">
                         <label class="form-label text-white">Ano referência </label>
                         <input  type="text" class="form-control" placeholder="Ex: 2020" name="ano_ref">  
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-2">
-                        <label class="form-label text-white"> Mês Referência </label>
+                    <div class="col-3 ">
+                        <label class="form-label text-white"> Mês </label>
                     </div>
-                    <div class="col-3"> 
+                    <div class="col-5"> 
                         <label class="form-label text-white">Consumo (KWh)  </label>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
             var n=1;
             function addInput2(divName) {
             var newdiv = document.createElement('div');
-            newdiv.innerHTML += '<div class="row"><div class="col-2 py-2">             <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"></div><div class="col-3 py-2"><input  type="text" class="form-control" placeholder="Apenas Números" name="mes_ref"></div></div>';
+            newdiv.innerHTML += '<div class="row"><div class="col-3  py-2">             <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"></div><div class="col-5 col-md-3  py-2"><input  type="text" class="form-control" placeholder="Apenas Números" name="mes_ref"></div></div>';
             document.getElementById(divName).appendChild(newdiv); line++; n++;
             }
             addInput2('lines2');
