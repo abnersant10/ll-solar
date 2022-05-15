@@ -201,7 +201,7 @@
                 <div class="row">
                     <div class="col-4 col-md-2 py-2">
                         <label class="form-label text-white">Ano referência </label>
-                        <input  type="text" class="form-control" placeholder="Ex: 2020" name="ano_ref">  
+                        <input  type="text" class="form-control" placeholder="2020" name="ano_ref">  
                     </div>
                 </div>
                 <div class="row">
@@ -250,7 +250,7 @@
             var n=1;
             function addInput2(divName) {
             var newdiv = document.createElement('div');
-            newdiv.innerHTML += '<div class="row"><div class="col-3  py-2">             <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"></div><div class="col-5 col-md-3  py-2"><input  type="text" class="form-control" placeholder="Apenas Números" name="mes_ref"></div></div>';
+            newdiv.innerHTML += '<div class="row"><div class="col-3  py-2">             <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"></div><div class="col-5 col-md-3  py-2"><input  type="text" class="form-control" placeholder="Valor" name="mes_ref"></div></div>';
             document.getElementById(divName).appendChild(newdiv); line++; n++;
             }
             addInput2('lines2');

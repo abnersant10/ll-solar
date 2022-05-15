@@ -35,7 +35,7 @@ class conta(models.Model):
     # chave estrangeira contra_contrato
     conta = models.ForeignKey(contrato, on_delete=models.CASCADE)
     data_ref = models.DateField(default=None)
-    consumo = models.IntegerField(default=None)
+    consumo = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
         return str(self.conta)
