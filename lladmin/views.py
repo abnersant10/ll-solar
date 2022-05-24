@@ -66,7 +66,6 @@ def clientes_cadastro(request):
         consumo = request.POST.get('consumo')
 
         if request.method == 'POST':
-
             _cpf = CPF()
             _cnpj = CNPJ()
             if _cpf.validate(cpf_cnpj) == True:
@@ -107,19 +106,14 @@ def clientes_cadastro(request):
             for lista_cli in cli:
                 if lista_cli[0] == cpf_cnpj:
                     anexo_ant = lista_cli[1]
-
+            # cadastrar novo cliente
             novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
                                    email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos+anexo_ant)
-            # nao salvar cliente por enquanto
             novo_cliente.save()
-
+            # cadastrar novo contrato associado a um cliente
             cod_cli = cliente.objects.get(cpf_cnpj=cpf_cnpj)
             contrato.objects.create(
                 cpf_cnpj_cliente=cod_cli, cpf_cnpj_contrato=_cod_contrato, conta_contrato=_contrato)
-
-            # criar novo contrato
-            # contrato.objects.update_or_create(
-            #    cpf_cnpj_cliente=cpf_cnpj_fk, cpf_cnpj_contrato='0', conta_contrato='0')
 
             messages.success(
                 request, 'Cliente cadastrado com suceesso!')

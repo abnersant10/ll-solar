@@ -126,12 +126,12 @@
                     <div class="row">
                         <div class=" col-11 col-sm-5 ">
                             <label class="form-label text-white ">* Nome Completo</label>
-                            <input type="text" name="nome" class="form-control" placeholder="Nome / Nome Fantasia"    autofocus  value="Miriam Vicente" >
+                            <input type="text" name="nome" class="form-control" placeholder="Nome / Nome Fantasia"    autofocus   >
                         </div>
 
                         <div class="col-11 col-sm-6 ">
                             <label class="form-label text-white ">* CPF ou CNPJ</label>
-                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj" value="03211721401"  >
+                            <input type="text" class="form-control" placeholder="CPF ou CNPJ" name="cpf_cnpj"   >
                         </div>
                         
                         <div class=" col-5 col-sm-5 py-2">
@@ -188,7 +188,7 @@
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
                     <hr class=" text-light ">
-                    <label class="form-label text-white">Contas de energia (Máx. 12 contas) </label>
+                    <label class="form-label text-white">Contas de energia (Referência) </label>
                 <div class="row">
                     <div class="col-9 col-md-4 py-2">
                         <input  type="text" class="form-control" placeholder="Conta contrato" name="contrato">  
@@ -199,37 +199,67 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-4 col-md-2 py-2">
-                        <label class="form-label text-white">Ano referência </label>
-                        <input  type="text" class="form-control" placeholder="2020" name="ano_ref">  
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 ">
+                    <div class="col-2 ">
                         <label class="form-label text-white"> Mês </label>
+                        <input id="numero" type="text" class="form-control my-2" name="num" readonly value="01- Janeiro">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num" readonly value="02 - Fevereiro">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num" readonly value="03 - Março">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num" readonly value="04 - Abril">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num" readonly value="05- Maio">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num" readonly value="06 - Junho">
                     </div>
-                    <div class="col-5"> 
-                        <label class="form-label text-white">Consumo (KWh)  </label>
-                    </div>
-                </div>
-                <!--base mês ref e ano ref 
-                <div class="row">
+
                     <div class="col-2">
-                        <label class="form-label text-white"> Mês Referência </label>
-                        <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"> 
+                        <label class="form-label text-white"> Ano </label>
+                        <input id="numero" type="text" class="form-control my-2" name="num" placeholder="2020">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num"  placeholder="2020">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num"  placeholder="2020">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num"  placeholder="2020">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num"  placeholder="2020">
+
+                        <input id="numero" type="text" class="form-control my-2" name="num"  placeholder="2020">
                     </div>
-                    <div class="col-3"> 
-                        <label class="form-label text-white">Consumo (KWh)  </label>
-                        <input  type="text" class="form-control" placeholder="Apenas Números" name="mes_ref">
+
+                    <div class="col-2">
+                        <label class="form-label text-white"> Consumo </label>
+                        <input  type="text" class="form-control my-2" name="num" placeholder="KWh" >
+
+                        <input  type="text" class="form-control my-2" name="num" placeholder="KWh">
+
+                        <input  type="text" class="form-control my-2" name="num" placeholder="KWh">
+
+                        <input  type="text" class="form-control my-2" name="num" placeholder="KWh">
+
+                        <input  type="text" class="form-control my-2" name="num" placeholder="KWh">
+
+                        <input  type="text" class="form-control my-2" name="num" placeholder="KWh">
+
                     </div>
+                    
+                    <div class="col-2">
+                        <div class="d-flex" style="height: 200px;">
+                            <div class="vr"></div>
+                        </div>
+                    </div>
+
                 </div>
-                -->
+              
+                
+             
+
+
 
                 <div class="row">
-                    <div class="form-group">
-                        <div id="lines2"></div>
-                        <button type="button" class="btn btn-light " onclick="addInput2('lines2')">+</button>
-                    </div>
+                    
                 </div>
                     <input type="hidden"  name="salvar" value="True" 
                                  readonly/>
@@ -244,17 +274,7 @@
             <footer class="row text-center text-light bg my-2 py-4"><br><h6> LL Solar - Todos os Direitos Reservados - {% now "Y" %}</h6><br></footer>
         </div>
     </div>
-    <!-- Enviar anexos -->
-        <script type="text/javascript">
-            var line = 1;
-            var n=1;
-            function addInput2(divName) {
-            var newdiv = document.createElement('div');
-            newdiv.innerHTML += '<div class="row"><div class="col-3  py-2">             <input  type="text" class="form-control" placeholder="1 a 12" name="mes_ref"></div><div class="col-5 col-md-3  py-2"><input  type="text" class="form-control" placeholder="Valor" name="mes_ref"></div></div>';
-            document.getElementById(divName).appendChild(newdiv); line++; n++;
-            }
-            addInput2('lines2');
-        </script>
+    
     <!-- Adicionar contas extras -->
     <script type="text/javascript">
         var line = 1;
