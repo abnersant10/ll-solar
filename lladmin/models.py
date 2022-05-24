@@ -17,14 +17,14 @@ class cliente(models.Model):
     anexos = models.CharField(max_length=950)
 
     def __str__(self):
-        return self.cpf_cnpj + " - " + self.nome_completo
+        return self.cpf_cnpj
 
 
 class contrato(models.Model):
     # chave estrangeira do cnpj_cpf_cliente
     cpf_cnpj_cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
     cpf_cnpj_contrato = models.CharField(
-        max_length=14)
+        max_length=14, default=None)
     conta_contrato = models.CharField(primary_key=True, max_length=20)
 
     def __str__(self):

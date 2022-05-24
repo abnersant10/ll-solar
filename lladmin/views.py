@@ -9,7 +9,7 @@ from django.core.files.storage import FileSystemStorage
 # library aux
 from validate_docbr import CPF, CNPJ
 import re
-from lladmin.models import cliente, equipamento
+from lladmin.models import cliente, equipamento, conta, contrato
 import os
 import shutil
 
@@ -58,9 +58,15 @@ def clientes_cadastro(request):
         anexos = ''
 
         # contas
-        contrato = request.POST.get('contrato')
-        cpf_cnpj_contrato = request.POST.get('cpf_cnpj_contrato')
+        _contrato = request.POST.get('contrato')
+        _cod_contrato = request.POST.get('cpf_cnpj_contrato')
+
+        ano_ref = request.POST.get('ano_ref')
+        mes_ref = request.POST.get('mes_ref')
+        consumo = request.POST.get('consumo')
+
         if request.method == 'POST':
+
             _cpf = CPF()
             _cnpj = CNPJ()
             if _cpf.validate(cpf_cnpj) == True:
@@ -89,6 +95,11 @@ def clientes_cadastro(request):
                     request, 'CPF ou CNPJ já está cadastrado!')
                 save = False
 
+        # após salvar cliente
+            # cria um objeto conta
+            # com os dados (cpf_cnpj, contrato, cpf_cnpj_contrato)
+            # salve o objeto no BD
+
         if save == True:
             anexo_ant = ''
             cli = cliente.objects.values_list(
@@ -99,10 +110,19 @@ def clientes_cadastro(request):
 
             novo_cliente = cliente(cpf_cnpj=cpf_cnpj, tipo_cliente=tipo_cliente, nome_completo=nome_cli, whatsapp=zap,
                                    email=email,  cep=cep, endereco=endereco, numero=num, cidade=cidade, bairro=bairro, estado=estado, complemento=complemento, anexos=anexos+anexo_ant)
+            # nao salvar cliente por enquanto
             novo_cliente.save()
+
+            cod_cli = cliente.objects.get(cpf_cnpj=cpf_cnpj)
+            contrato.objects.create(
+                cpf_cnpj_cliente=cod_cli, cpf_cnpj_contrato=_cod_contrato, conta_contrato=_contrato)
+
+            # criar novo contrato
+            # contrato.objects.update_or_create(
+            #    cpf_cnpj_cliente=cpf_cnpj_fk, cpf_cnpj_contrato='0', conta_contrato='0')
+
             messages.success(
                 request, 'Cliente cadastrado com suceesso!')
-
         # contexto pra encontrar nome do cliente
         clientes = cliente.objects.values_list(
             'cpf_cnpj', 'tipo_cliente', 'nome_completo', 'whatsapp', 'email', 'endereco', 'numero', 'bairro', 'cidade', 'estado',  'complemento', 'cep', 'anexos', named=True)
