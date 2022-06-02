@@ -1,4 +1,5 @@
 from ctypes import cast
+from datetime import datetime
 from fileinput import filename
 from urllib import request
 from django.http import HttpResponse
@@ -61,10 +62,6 @@ def clientes_cadastro(request):
         _contrato = request.POST.get('contrato')
         _cod_contrato = request.POST.get('cpf_cnpj_contrato')
 
-        ano_ref = request.POST.get('ano_ref')
-        mes_ref = request.POST.get('mes_ref')
-        consumo = request.POST.get('consumo')
-
         if request.method == 'POST':
             _cpf = CPF()
             _cnpj = CNPJ()
@@ -112,8 +109,24 @@ def clientes_cadastro(request):
             novo_cliente.save()
             # cadastrar novo contrato associado a um cliente
             cod_cli = cliente.objects.get(cpf_cnpj=cpf_cnpj)
-            contrato.objects.create(
+            novo_contrato = contrato(
                 cpf_cnpj_cliente=cod_cli, cpf_cnpj_contrato=_cod_contrato, conta_contrato=_contrato)
+            novo_contrato.save()
+
+            contrato_conta = contrato.objects.get(conta_contrato=_contrato)
+            # cadastrar as contas de energia
+            for i in range(1, 13):
+                dia = 1
+                m = str('m'+str(i))
+                a = str('a'+str(i))
+                c = str('c'+str(i))
+                mes = request.POST.get(m)
+                ano = request.POST.get(a)
+                _consumo = request.POST.get(c)
+
+                nova_conta = conta(
+                    conta=contrato_conta, data_ref=datetime.today(), consumo=_consumo)
+                nova_conta.save()
 
             messages.success(
                 request, 'Cliente cadastrado com suceesso!')
