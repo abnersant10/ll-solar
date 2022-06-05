@@ -1,5 +1,6 @@
+from calendar import month
 from ctypes import cast
-from datetime import datetime
+from datetime import date, datetime
 from fileinput import filename
 from urllib import request
 from django.http import HttpResponse
@@ -116,16 +117,22 @@ def clientes_cadastro(request):
             contrato_conta = contrato.objects.get(conta_contrato=_contrato)
             # cadastrar as contas de energia
             for i in range(1, 13):
-                dia = 1
-                m = str('m'+str(i))
+
                 a = str('a'+str(i))
                 c = str('c'+str(i))
-                mes = request.POST.get(m)
-                ano = request.POST.get(a)
-                _consumo = request.POST.get(c)
 
+                ano = request.POST.get(a)
+
+                _consumo = request.POST.get(c)
+                _consumo = re.sub(',', '.', _consumo)
+                if _consumo == '':
+                    _consumo = 0.00
+                if ano == '':
+                    ano = 2020
+                data = datetime(int(ano), i, 1)
+                print(data)
                 nova_conta = conta(
-                    conta=contrato_conta, data_ref=datetime.today(), consumo=_consumo)
+                    conta=contrato_conta, data_ref=data, consumo=_consumo)
                 nova_conta.save()
 
             messages.success(
