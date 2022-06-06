@@ -26,20 +26,10 @@ class contrato(models.Model):
     conta_contrato = models.CharField(primary_key=True, max_length=20)
     cpf_cnpj_contrato = models.CharField(
         max_length=14, default=None)
-    consumo = models.DecimalField(max_digits=5, decimal_places=2)
+    consumo = models.DecimalField(max_digits=5, decimal_places=2, default=None)
 
     def __str__(self):
         return self.conta_contrato
-
-
-class conta(models.Model):
-    # chave estrangeira contra_contrato
-    conta = models.ForeignKey(contrato, on_delete=models.CASCADE)
-    data_ref = models.DateField(default=None)
-    consumo = models.DecimalField(max_digits=5, decimal_places=2)
-
-    def __str__(self):
-        return str(self.conta)
 
 
 class equipamento(models.Model):

@@ -11,7 +11,7 @@ from django.core.files.storage import FileSystemStorage
 # library aux
 from validate_docbr import CPF, CNPJ
 import re
-from lladmin.models import cliente, equipamento, conta, contrato
+from lladmin.models import cliente, equipamento, contrato
 import os
 import shutil
 

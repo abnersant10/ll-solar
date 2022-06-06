@@ -184,15 +184,17 @@
                     <div class="col-11 py-2">
                     <div class="form-group">
                         <label class="form-label text-white ">Enviar Anexos (Máx. 20) </label><br>
+                    <!-- Adicionar anexos -->
                     <div id="lines"></div>
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
+
                     <hr class=" text-light ">
-                    <label class="form-label text-white">* Contas de energia - Referência (Máx. 24)  </label>
+                    <label class="form-label text-white">Contas de energia - Referência (Máx. 12)  </label>
                 
-                
+                <!-- Adicionar contas de energia -->
                 <div id="lines2"></div>
-                        <button type="button" class="btn btn-light " onclick="addInput('lines2')">+</button>
+                        <button type="button" class="btn btn-light " onclick="addInput2('lines2')">+</button>
                 </div>
               
                  
@@ -227,13 +229,13 @@
     <script type="text/javascript">
         var line = 1;
         var n=1;
-        function addInput(divName) {
+        function addInput2(divName) {
         var newdiv = document.createElement('div');
-        newdiv.innerHTML += '<div class="row"><div class="col-9 col-md-3 py-2">      <input  type="text" class="form-control" placeholder="Conta contrato" name="contrato'+n+'" required ></div><div class="col-9 col-md-3 py-2"><input  type="text" class="form-control" placeholder="CPF ou CNPJ do contrato" name="cod_contrato'+n+'"></div><div class="col-7 col-md-2 py-2">              <input  type="text" class="form-control" placeholder="Consumo" name="consumo'+n+'"></div></div>';
+        newdiv.innerHTML += '<div class="row"><div class="col-9 col-md-3 py-2"><input  type="text" class="form-control" placeholder="Conta contrato" name="contrato'+n+'" required ></div><div class="col-9 col-md-3 py-2"><input  type="text" class="form-control" placeholder="CPF ou CNPJ do contrato" name="cod_contrato'+n+'"></div><div class="col-7 col-md-2 py-2"><input  type="text" class="form-control" placeholder="Consumo" name="consumo'+n+'"></div></div>';
         document.getElementById(divName).appendChild(newdiv); line++; n++;
         }
-        addInput('lines2');
-    </script>
+        addInput2('lines2');
+    </script> 
 
     <script type="text/javascript">
             jQuery("#cep").focusout(function(){
