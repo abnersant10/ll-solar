@@ -110,6 +110,23 @@ def clientes_cadastro(request):
             novo_cliente.save()
             # cadastrar novo contrato associado a um cliente
             cod_cli = cliente.objects.get(cpf_cnpj=cpf_cnpj)
+
+            for i in range(1, 13):
+                pass
+                _cont = 'contrato'+str(i)
+                _cpf_cpnj = 'cod_contrato'+str(i)
+                _cons = 'consumo'+str(i)
+                cont = request.POST.get(_cont)
+                cod_cont = request.POST.get(_cpf_cpnj)
+                cons = request.POST.get(_cons)
+
+                novo_contrato = contrato(
+                    cpf_cnpj_cliente=cod_cli, conta_contrato=cont, cpf_cnpj_contrato=cod_cont, consumo=cons)
+                novo_contrato.save()
+
+                # crie uma conta com cod_conta, cpf_associado, consumo, CPF_FK
+                # salve no BD
+
             novo_contrato = contrato(
                 cpf_cnpj_cliente=cod_cli, cpf_cnpj_contrato=_cod_contrato, conta_contrato=_contrato)
             novo_contrato.save()

@@ -188,7 +188,7 @@
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
                     <hr class=" text-light ">
-                    <label class="form-label text-white">* Contas de energia (Referência)  </label>
+                    <label class="form-label text-white">* Contas de energia - Referência (Máx. 24)  </label>
                 
                 
                 <div id="lines2"></div>
@@ -229,7 +229,7 @@
         var n=1;
         function addInput(divName) {
         var newdiv = document.createElement('div');
-        newdiv.innerHTML += '<div class="row"><div class="col-9 col-md-3 py-2">      <input  type="text" class="form-control" placeholder="Conta contrato" name="contrato" required ></div><div class="col-9 col-md-3 py-2">          <input  type="text" class="form-control" placeholder="CPF ou CNPJ do contrato" name="cpf_cnpj_contrato"></div><div class="col-7 col-md-2 py-2">              <input  type="text" class="form-control" placeholder="Consumo" name="consumo"></div></div>';
+        newdiv.innerHTML += '<div class="row"><div class="col-9 col-md-3 py-2">      <input  type="text" class="form-control" placeholder="Conta contrato" name="contrato'+n+'" required ></div><div class="col-9 col-md-3 py-2"><input  type="text" class="form-control" placeholder="CPF ou CNPJ do contrato" name="cod_contrato'+n+'"></div><div class="col-7 col-md-2 py-2">              <input  type="text" class="form-control" placeholder="Consumo" name="consumo'+n+'"></div></div>';
         document.getElementById(divName).appendChild(newdiv); line++; n++;
         }
         addInput('lines2');
