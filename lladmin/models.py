@@ -23,9 +23,10 @@ class cliente(models.Model):
 class contrato(models.Model):
     # chave estrangeira do cnpj_cpf_cliente
     cpf_cnpj_cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
+    conta_contrato = models.CharField(primary_key=True, max_length=20)
     cpf_cnpj_contrato = models.CharField(
         max_length=14, default=None)
-    conta_contrato = models.CharField(primary_key=True, max_length=20)
+    consumo = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
         return self.conta_contrato

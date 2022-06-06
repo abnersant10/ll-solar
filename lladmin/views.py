@@ -114,27 +114,6 @@ def clientes_cadastro(request):
                 cpf_cnpj_cliente=cod_cli, cpf_cnpj_contrato=_cod_contrato, conta_contrato=_contrato)
             novo_contrato.save()
 
-            contrato_conta = contrato.objects.get(conta_contrato=_contrato)
-            # cadastrar as contas de energia
-            for i in range(1, 13):
-
-                a = str('a'+str(i))
-                c = str('c'+str(i))
-
-                ano = request.POST.get(a)
-
-                _consumo = request.POST.get(c)
-                _consumo = re.sub(',', '.', _consumo)
-                if _consumo == '':
-                    _consumo = 0.00
-                if ano == '':
-                    ano = 2020
-                data = datetime(int(ano), i, 1)
-                print(data)
-                nova_conta = conta(
-                    conta=contrato_conta, data_ref=data, consumo=_consumo)
-                nova_conta.save()
-
             messages.success(
                 request, 'Cliente cadastrado com suceesso!')
         # contexto pra encontrar nome do cliente

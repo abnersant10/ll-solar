@@ -184,124 +184,19 @@
                     <div class="col-11 py-2">
                     <div class="form-group">
                         <label class="form-label text-white ">Enviar Anexos (Máx. 20) </label><br>
-                        <div id="lines"></div>
+                    <div id="lines"></div>
                         <button type="button" class="btn btn-light " onclick="addInput('lines')">+</button>
                     </div>
                     <hr class=" text-light ">
                     <label class="form-label text-white">* Contas de energia (Referência)  </label>
-                <div class="row">
-                    <div class="col-9 col-md-4 py-2">
-                        <input  type="text" class="form-control" placeholder="Conta contrato" name="contrato" required >  
-                    </div>
-                    <div class="col-9 col-md-4 py-2">
-                        <input  type="text" class="form-control" placeholder="CPF ou CNPJ do contrato" name="cpf_cnpj_contrato">  
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-2 ">
-                        <label class="form-label text-white"> Mês </label>
-                        <input id="numero" type="text" class="form-control my-2" name="m1" readonly value="1- Janeiro">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m2" readonly value="02 - Fevereiro">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m3" readonly value="03 - Março">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m4" readonly value="04 - Abril">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m5" readonly value="05- Maio">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m6" readonly value="06 - Junho">
-                    </div>
-
-                    <div class="col-2">
-                        <label class="form-label text-white"> Ano </label>
-
-                        <input id="numero" type="number" class="form-control my-2" name="a1" placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a2"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a3"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a4"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a5"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a6"  placeholder="2020">
-                    </div>
-
-                    <div class="col-2">
-                        <label class="form-label text-white"> Consumo </label>
-                        <input  type="text" class="form-control my-2" name="c1" placeholder="KWh" >
-
-                        <input  type="text" class="form-control my-2" name="c2" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c3" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c4" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c5" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c6" placeholder="KWh">
-
-                    </div>
-                    
-                    <div class="col-2 ">
-                        <label class="form-label text-white"> Mês </label>
-                        <input id="numero" type="text" class="form-control my-2" name="m7" readonly value="07- Julho">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m8" readonly value="08 - Agosto">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m9" readonly value="09 - Setembro">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m10" readonly value="10 - Outubro">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m11" readonly value="11- Novembro">
-
-                        <input id="numero" type="text" class="form-control my-2" name="m12" readonly value="12 - Dezembro">
-                    </div>
-
-                    <div class="col-2">
-                        <label class="form-label text-white"> Ano </label>
-                        <input id="numero" type="number" class="form-control my-2" name="a7" placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a8"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a9"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a10"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a11"  placeholder="2020">
-
-                        <input id="numero" type="number" class="form-control my-2" name="a12"  placeholder="2020">
-                    </div>
-
-                    <div class="col-2">
-                        <label class="form-label text-white"> Consumo </label>
-                        <input  type="text" class="form-control my-2" name="c7" placeholder="KWh" >
-
-                        <input  type="text" class="form-control my-2" name="c8" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c9" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c10" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c11" placeholder="KWh">
-
-                        <input  type="text" class="form-control my-2" name="c12" placeholder="KWh">
-
-                    </div>
-
+                
+                
+                <div id="lines2"></div>
+                        <button type="button" class="btn btn-light " onclick="addInput('lines2')">+</button>
                 </div>
               
-                
-             
-
-
-
-                <div class="row">
-                    
-                </div>
+                 
+                <div>
                     <input type="hidden"  name="salvar" value="True" 
                                  readonly/>
                 </div>
@@ -316,7 +211,7 @@
         </div>
     </div>
     
-    <!-- Adicionar contas extras -->
+    <!-- Adicionar anexos -->
     <script type="text/javascript">
         var line = 1;
         var n=1;
@@ -327,6 +222,19 @@
         }
         addInput('lines');
     </script>
+
+    <!-- Adicionar contas extras -->
+    <script type="text/javascript">
+        var line = 1;
+        var n=1;
+        function addInput(divName) {
+        var newdiv = document.createElement('div');
+        newdiv.innerHTML += '<div class="row"><div class="col-9 col-md-3 py-2">      <input  type="text" class="form-control" placeholder="Conta contrato" name="contrato" required ></div><div class="col-9 col-md-3 py-2">          <input  type="text" class="form-control" placeholder="CPF ou CNPJ do contrato" name="cpf_cnpj_contrato"></div><div class="col-7 col-md-2 py-2">              <input  type="text" class="form-control" placeholder="Consumo" name="consumo"></div></div>';
+        document.getElementById(divName).appendChild(newdiv); line++; n++;
+        }
+        addInput('lines2');
+    </script>
+
     <script type="text/javascript">
             jQuery("#cep").focusout(function(){
                 jQuery.ajax({
